@@ -1,0 +1,13 @@
+Jonathan Poch
+NYU Estimote App
+#######
+1/18/17
+-Installed EstimoteSDK
+-Setting up Location Services
+-Enabled Bluetooth LE background mode
+-Implemented sticker information monitoring
+-Installed SnapKit
+-Installed Alamofire
+-Installed PromiseKit
+-Implemented sticker list view
+-Completed sticker detail view

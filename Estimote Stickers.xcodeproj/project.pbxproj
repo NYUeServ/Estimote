@@ -1,0 +1,779 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3EA49224BBF93BCA248484BB /* Pods_Estimote_StickersUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E49B6E30A69D7571196071 /* Pods_Estimote_StickersUITests.framework */; };
+		8B63A080E8F815742EC13EFD /* Pods_Estimote_StickersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFD4564CE4FB5AA3BCC33F1 /* Pods_Estimote_StickersTests.framework */; };
+		CB1109F18DA7D9F5D9D52785 /* Pods_Estimote_Stickers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55458258D9CF01258AFA0B2 /* Pods_Estimote_Stickers.framework */; };
+		EE806C751E2FC6E70069622D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE806C741E2FC6E70069622D /* AppDelegate.swift */; };
+		EE806C771E2FC6E70069622D /* StickerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE806C761E2FC6E70069622D /* StickerListViewController.swift */; };
+		EE806C7D1E2FC6E70069622D /* Estimote_Stickers.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE806C7B1E2FC6E70069622D /* Estimote_Stickers.xcdatamodeld */; };
+		EE806C7F1E2FC6E70069622D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE806C7E1E2FC6E70069622D /* Assets.xcassets */; };
+		EE806C821E2FC6E70069622D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE806C801E2FC6E70069622D /* LaunchScreen.storyboard */; };
+		EE806C8D1E2FC6E70069622D /* Estimote_StickersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE806C8C1E2FC6E70069622D /* Estimote_StickersTests.swift */; };
+		EE806C981E2FC6E70069622D /* Estimote_StickersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE806C971E2FC6E70069622D /* Estimote_StickersUITests.swift */; };
+		EE806CA81E2FCA310069622D /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = EE806CA71E2FCA310069622D /* ChangeLog */; };
+		EE806CB61E2FF24B0069622D /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE806CB51E2FF24B0069622D /* Sticker.swift */; };
+		EE806CB81E30019B0069622D /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE806CB71E30019B0069622D /* StickerCell.swift */; };
+		EE806CBA1E300C4A0069622D /* StickerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE806CB91E300C4A0069622D /* StickerDetailViewController.swift */; };
+		EEC228E41E315189002719C0 /* ESAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC228E31E315189002719C0 /* ESAPIManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EE806C891E2FC6E70069622D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE806C691E2FC6E70069622D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE806C701E2FC6E70069622D;
+			remoteInfo = "Estimote Stickers";
+		};
+		EE806C941E2FC6E70069622D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE806C691E2FC6E70069622D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE806C701E2FC6E70069622D;
+			remoteInfo = "Estimote Stickers";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		418B1EC97064EAA5922948B5 /* Pods-Estimote StickersUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estimote StickersUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Estimote StickersUITests/Pods-Estimote StickersUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		47581A1FA434CBE6AE25BE11 /* Pods-Estimote Stickers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estimote Stickers.release.xcconfig"; path = "Pods/Target Support Files/Pods-Estimote Stickers/Pods-Estimote Stickers.release.xcconfig"; sourceTree = "<group>"; };
+		5DDFDE1AAAFC0C21C8FE9E7D /* Pods-Estimote StickersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estimote StickersTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Estimote StickersTests/Pods-Estimote StickersTests.release.xcconfig"; sourceTree = "<group>"; };
+		8EFD4564CE4FB5AA3BCC33F1 /* Pods_Estimote_StickersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Estimote_StickersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8E49B6E30A69D7571196071 /* Pods_Estimote_StickersUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Estimote_StickersUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B52744B11C6DEA1AC4C07A7F /* Pods-Estimote StickersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estimote StickersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Estimote StickersTests/Pods-Estimote StickersTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE506F59A674319A7AF0C42A /* Pods-Estimote StickersUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estimote StickersUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Estimote StickersUITests/Pods-Estimote StickersUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E55458258D9CF01258AFA0B2 /* Pods_Estimote_Stickers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Estimote_Stickers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EADF39B6F212E67528A20001 /* Pods-Estimote Stickers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estimote Stickers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Estimote Stickers/Pods-Estimote Stickers.debug.xcconfig"; sourceTree = "<group>"; };
+		EE806C711E2FC6E70069622D /* Estimote Stickers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Estimote Stickers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE806C741E2FC6E70069622D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EE806C761E2FC6E70069622D /* StickerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerListViewController.swift; sourceTree = "<group>"; };
+		EE806C7C1E2FC6E70069622D /* Estimote_Stickers.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Estimote_Stickers.xcdatamodel; sourceTree = "<group>"; };
+		EE806C7E1E2FC6E70069622D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE806C811E2FC6E70069622D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE806C831E2FC6E70069622D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE806C881E2FC6E70069622D /* Estimote StickersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Estimote StickersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE806C8C1E2FC6E70069622D /* Estimote_StickersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estimote_StickersTests.swift; sourceTree = "<group>"; };
+		EE806C8E1E2FC6E70069622D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE806C931E2FC6E70069622D /* Estimote StickersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Estimote StickersUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE806C971E2FC6E70069622D /* Estimote_StickersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estimote_StickersUITests.swift; sourceTree = "<group>"; };
+		EE806C991E2FC6E70069622D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE806CA71E2FCA310069622D /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
+		EE806CB01E2FCF680069622D /* ObjCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
+		EE806CB51E2FF24B0069622D /* Sticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
+		EE806CB71E30019B0069622D /* StickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
+		EE806CB91E300C4A0069622D /* StickerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerDetailViewController.swift; sourceTree = "<group>"; };
+		EEC228E31E315189002719C0 /* ESAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESAPIManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE806C6E1E2FC6E70069622D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB1109F18DA7D9F5D9D52785 /* Pods_Estimote_Stickers.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE806C851E2FC6E70069622D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B63A080E8F815742EC13EFD /* Pods_Estimote_StickersTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE806C901E2FC6E70069622D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EA49224BBF93BCA248484BB /* Pods_Estimote_StickersUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A553E4671E32F34C7FDE152A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E55458258D9CF01258AFA0B2 /* Pods_Estimote_Stickers.framework */,
+				8EFD4564CE4FB5AA3BCC33F1 /* Pods_Estimote_StickersTests.framework */,
+				A8E49B6E30A69D7571196071 /* Pods_Estimote_StickersUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C22478A4ECC147ED92D02107 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EADF39B6F212E67528A20001 /* Pods-Estimote Stickers.debug.xcconfig */,
+				47581A1FA434CBE6AE25BE11 /* Pods-Estimote Stickers.release.xcconfig */,
+				B52744B11C6DEA1AC4C07A7F /* Pods-Estimote StickersTests.debug.xcconfig */,
+				5DDFDE1AAAFC0C21C8FE9E7D /* Pods-Estimote StickersTests.release.xcconfig */,
+				418B1EC97064EAA5922948B5 /* Pods-Estimote StickersUITests.debug.xcconfig */,
+				CE506F59A674319A7AF0C42A /* Pods-Estimote StickersUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EE806C681E2FC6E70069622D = {
+			isa = PBXGroup;
+			children = (
+				EE806CA71E2FCA310069622D /* ChangeLog */,
+				EE806C731E2FC6E70069622D /* Estimote Stickers */,
+				EE806C8B1E2FC6E70069622D /* Estimote StickersTests */,
+				EE806C961E2FC6E70069622D /* Estimote StickersUITests */,
+				EE806C721E2FC6E70069622D /* Products */,
+				C22478A4ECC147ED92D02107 /* Pods */,
+				A553E4671E32F34C7FDE152A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EE806C721E2FC6E70069622D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE806C711E2FC6E70069622D /* Estimote Stickers.app */,
+				EE806C881E2FC6E70069622D /* Estimote StickersTests.xctest */,
+				EE806C931E2FC6E70069622D /* Estimote StickersUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE806C731E2FC6E70069622D /* Estimote Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				EE806C741E2FC6E70069622D /* AppDelegate.swift */,
+				EE806CB31E2FF1120069622D /* API */,
+				EE806CB41E2FF1260069622D /* View Controllers */,
+				EE806CB11E2FF1040069622D /* Models */,
+				EE806CB01E2FCF680069622D /* ObjCBridge.h */,
+				EE806C7E1E2FC6E70069622D /* Assets.xcassets */,
+				EE806C801E2FC6E70069622D /* LaunchScreen.storyboard */,
+				EE806C831E2FC6E70069622D /* Info.plist */,
+				EE806C7B1E2FC6E70069622D /* Estimote_Stickers.xcdatamodeld */,
+			);
+			path = "Estimote Stickers";
+			sourceTree = "<group>";
+		};
+		EE806C8B1E2FC6E70069622D /* Estimote StickersTests */ = {
+			isa = PBXGroup;
+			children = (
+				EE806C8C1E2FC6E70069622D /* Estimote_StickersTests.swift */,
+				EE806C8E1E2FC6E70069622D /* Info.plist */,
+			);
+			path = "Estimote StickersTests";
+			sourceTree = "<group>";
+		};
+		EE806C961E2FC6E70069622D /* Estimote StickersUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EE806C971E2FC6E70069622D /* Estimote_StickersUITests.swift */,
+				EE806C991E2FC6E70069622D /* Info.plist */,
+			);
+			path = "Estimote StickersUITests";
+			sourceTree = "<group>";
+		};
+		EE806CB11E2FF1040069622D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EE806CB51E2FF24B0069622D /* Sticker.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		EE806CB31E2FF1120069622D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				EEC228E31E315189002719C0 /* ESAPIManager.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		EE806CB41E2FF1260069622D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EE806C761E2FC6E70069622D /* StickerListViewController.swift */,
+				EE806CB91E300C4A0069622D /* StickerDetailViewController.swift */,
+				EE806CB71E30019B0069622D /* StickerCell.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE806C701E2FC6E70069622D /* Estimote Stickers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE806C9C1E2FC6E70069622D /* Build configuration list for PBXNativeTarget "Estimote Stickers" */;
+			buildPhases = (
+				70FA96130BB78DB5617C502F /* [CP] Check Pods Manifest.lock */,
+				EE806C6D1E2FC6E70069622D /* Sources */,
+				EE806C6E1E2FC6E70069622D /* Frameworks */,
+				EE806C6F1E2FC6E70069622D /* Resources */,
+				49F52FC9C956934F4CA06B0F /* [CP] Embed Pods Frameworks */,
+				503CDFEDEB3C67486ADF7EA6 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Estimote Stickers";
+			productName = "Estimote Stickers";
+			productReference = EE806C711E2FC6E70069622D /* Estimote Stickers.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EE806C871E2FC6E70069622D /* Estimote StickersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE806C9F1E2FC6E70069622D /* Build configuration list for PBXNativeTarget "Estimote StickersTests" */;
+			buildPhases = (
+				0C6E19A14D33697F7061FA3E /* [CP] Check Pods Manifest.lock */,
+				EE806C841E2FC6E70069622D /* Sources */,
+				EE806C851E2FC6E70069622D /* Frameworks */,
+				EE806C861E2FC6E70069622D /* Resources */,
+				4E58DB97D06B58D172F106D4 /* [CP] Embed Pods Frameworks */,
+				2C238C362275128803054216 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE806C8A1E2FC6E70069622D /* PBXTargetDependency */,
+			);
+			name = "Estimote StickersTests";
+			productName = "Estimote StickersTests";
+			productReference = EE806C881E2FC6E70069622D /* Estimote StickersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EE806C921E2FC6E70069622D /* Estimote StickersUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE806CA21E2FC6E70069622D /* Build configuration list for PBXNativeTarget "Estimote StickersUITests" */;
+			buildPhases = (
+				F3CC0AF6597ABFB9FEE33C34 /* [CP] Check Pods Manifest.lock */,
+				EE806C8F1E2FC6E70069622D /* Sources */,
+				EE806C901E2FC6E70069622D /* Frameworks */,
+				EE806C911E2FC6E70069622D /* Resources */,
+				00A4FCF09A1DAED38907435D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE806C951E2FC6E70069622D /* PBXTargetDependency */,
+			);
+			name = "Estimote StickersUITests";
+			productName = "Estimote StickersUITests";
+			productReference = EE806C931E2FC6E70069622D /* Estimote StickersUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE806C691E2FC6E70069622D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Jonathan Poch";
+				TargetAttributes = {
+					EE806C701E2FC6E70069622D = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = P8PQNBAE99;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					EE806C871E2FC6E70069622D = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EE806C701E2FC6E70069622D;
+					};
+					EE806C921E2FC6E70069622D = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EE806C701E2FC6E70069622D;
+					};
+				};
+			};
+			buildConfigurationList = EE806C6C1E2FC6E70069622D /* Build configuration list for PBXProject "Estimote Stickers" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE806C681E2FC6E70069622D;
+			productRefGroup = EE806C721E2FC6E70069622D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE806C701E2FC6E70069622D /* Estimote Stickers */,
+				EE806C871E2FC6E70069622D /* Estimote StickersTests */,
+				EE806C921E2FC6E70069622D /* Estimote StickersUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE806C6F1E2FC6E70069622D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE806C821E2FC6E70069622D /* LaunchScreen.storyboard in Resources */,
+				EE806CA81E2FCA310069622D /* ChangeLog in Resources */,
+				EE806C7F1E2FC6E70069622D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE806C861E2FC6E70069622D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE806C911E2FC6E70069622D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00A4FCF09A1DAED38907435D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Estimote StickersUITests/Pods-Estimote StickersUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0C6E19A14D33697F7061FA3E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2C238C362275128803054216 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Estimote StickersTests/Pods-Estimote StickersTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49F52FC9C956934F4CA06B0F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Estimote Stickers/Pods-Estimote Stickers-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E58DB97D06B58D172F106D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Estimote StickersTests/Pods-Estimote StickersTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		503CDFEDEB3C67486ADF7EA6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Estimote Stickers/Pods-Estimote Stickers-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70FA96130BB78DB5617C502F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F3CC0AF6597ABFB9FEE33C34 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE806C6D1E2FC6E70069622D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE806C771E2FC6E70069622D /* StickerListViewController.swift in Sources */,
+				EE806CB61E2FF24B0069622D /* Sticker.swift in Sources */,
+				EEC228E41E315189002719C0 /* ESAPIManager.swift in Sources */,
+				EE806C7D1E2FC6E70069622D /* Estimote_Stickers.xcdatamodeld in Sources */,
+				EE806CBA1E300C4A0069622D /* StickerDetailViewController.swift in Sources */,
+				EE806CB81E30019B0069622D /* StickerCell.swift in Sources */,
+				EE806C751E2FC6E70069622D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE806C841E2FC6E70069622D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE806C8D1E2FC6E70069622D /* Estimote_StickersTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE806C8F1E2FC6E70069622D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE806C981E2FC6E70069622D /* Estimote_StickersUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE806C8A1E2FC6E70069622D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE806C701E2FC6E70069622D /* Estimote Stickers */;
+			targetProxy = EE806C891E2FC6E70069622D /* PBXContainerItemProxy */;
+		};
+		EE806C951E2FC6E70069622D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE806C701E2FC6E70069622D /* Estimote Stickers */;
+			targetProxy = EE806C941E2FC6E70069622D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EE806C801E2FC6E70069622D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE806C811E2FC6E70069622D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE806C9A1E2FC6E70069622D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
+			};
+			name = Debug;
+		};
+		EE806C9B1E2FC6E70069622D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE806C9D1E2FC6E70069622D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EADF39B6F212E67528A20001 /* Pods-Estimote Stickers.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P8PQNBAE99;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "Estimote Stickers/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ios.Estimote-Stickers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
+				SWIFT_VERSION = 2.3;
+			};
+			name = Debug;
+		};
+		EE806C9E1E2FC6E70069622D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47581A1FA434CBE6AE25BE11 /* Pods-Estimote Stickers.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P8PQNBAE99;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "Estimote Stickers/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ios.Estimote-Stickers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_NAME}/ObjCBridge.h";
+				SWIFT_VERSION = 2.3;
+			};
+			name = Release;
+		};
+		EE806CA01E2FC6E70069622D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B52744B11C6DEA1AC4C07A7F /* Pods-Estimote StickersTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Estimote StickersTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ios.Estimote-StickersTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Estimote Stickers.app/Estimote Stickers";
+			};
+			name = Debug;
+		};
+		EE806CA11E2FC6E70069622D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DDFDE1AAAFC0C21C8FE9E7D /* Pods-Estimote StickersTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Estimote StickersTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ios.Estimote-StickersTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Estimote Stickers.app/Estimote Stickers";
+			};
+			name = Release;
+		};
+		EE806CA31E2FC6E70069622D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 418B1EC97064EAA5922948B5 /* Pods-Estimote StickersUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "Estimote StickersUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ios.Estimote-StickersUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
+				TEST_TARGET_NAME = "Estimote Stickers";
+			};
+			name = Debug;
+		};
+		EE806CA41E2FC6E70069622D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE506F59A674319A7AF0C42A /* Pods-Estimote StickersUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = "Estimote StickersUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ios.Estimote-StickersUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
+				TEST_TARGET_NAME = "Estimote Stickers";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE806C6C1E2FC6E70069622D /* Build configuration list for PBXProject "Estimote Stickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE806C9A1E2FC6E70069622D /* Debug */,
+				EE806C9B1E2FC6E70069622D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE806C9C1E2FC6E70069622D /* Build configuration list for PBXNativeTarget "Estimote Stickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE806C9D1E2FC6E70069622D /* Debug */,
+				EE806C9E1E2FC6E70069622D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE806C9F1E2FC6E70069622D /* Build configuration list for PBXNativeTarget "Estimote StickersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE806CA01E2FC6E70069622D /* Debug */,
+				EE806CA11E2FC6E70069622D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE806CA21E2FC6E70069622D /* Build configuration list for PBXNativeTarget "Estimote StickersUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE806CA31E2FC6E70069622D /* Debug */,
+				EE806CA41E2FC6E70069622D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EE806C7B1E2FC6E70069622D /* Estimote_Stickers.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EE806C7C1E2FC6E70069622D /* Estimote_Stickers.xcdatamodel */,
+			);
+			currentVersion = EE806C7C1E2FC6E70069622D /* Estimote_Stickers.xcdatamodel */;
+			path = Estimote_Stickers.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EE806C691E2FC6E70069622D /* Project object */;
+}

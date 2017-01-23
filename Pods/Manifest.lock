@@ -1,0 +1,40 @@
+PODS:
+  - Alamofire (3.5.1)
+  - EstimoteSDK (4.12.2)
+  - OMGHTTPURLRQ (3.2.2):
+    - OMGHTTPURLRQ/RQ (= 3.2.2)
+  - OMGHTTPURLRQ/FormURLEncode (3.2.2)
+  - OMGHTTPURLRQ/RQ (3.2.2):
+    - OMGHTTPURLRQ/FormURLEncode
+    - OMGHTTPURLRQ/UserAgent
+  - OMGHTTPURLRQ/UserAgent (3.2.2)
+  - PromiseKit (3.5.3):
+    - PromiseKit/Foundation (= 3.5.3)
+    - PromiseKit/QuartzCore (= 3.5.3)
+    - PromiseKit/UIKit (= 3.5.3)
+  - PromiseKit/CorePromise (3.5.3)
+  - PromiseKit/Foundation (3.5.3):
+    - OMGHTTPURLRQ (~> 3.2.0)
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (3.5.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (3.5.3):
+    - PromiseKit/CorePromise
+  - SnapKit (0.22.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.5.1)
+  - EstimoteSDK
+  - PromiseKit (~> 3.5)
+  - SnapKit (~> 0.22.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
+  EstimoteSDK: 8856f0b894a7347f0275740a79bf7cce80f9c681
+  OMGHTTPURLRQ: edb14c7d28add69226b79d826f930805927a0ffa
+  PromiseKit: d3393df0dfd7ed208cec0267dce13c66d9c09d0a
+  SnapKit: 0dd2fd157330f1ea11fd84da13e6be8a7a22bae0
+
+PODFILE CHECKSUM: 4a8a59d55e31a613b8de24136fc7b09656462b4a
+
+COCOAPODS: 1.0.1
