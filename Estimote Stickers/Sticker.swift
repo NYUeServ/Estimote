@@ -18,12 +18,13 @@ struct Sticker {
     var type: String
     var color: String
     var name: String
-    let date: String = {
-        var date = NSDate()
-        var df: NSDateFormatter = NSDateFormatter()
-        df.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
-        return df.stringFromDate(date)
-    }()
+//    let date: String = {
+//        var date = NSDate()
+//        var df: NSDateFormatter = NSDateFormatter()
+//        df.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
+//        print("DATE: \(df.stringFromDate(date))")
+//        return df.stringFromDate(date)
+//    }()
     var currentState: String
     var previousState: String
     

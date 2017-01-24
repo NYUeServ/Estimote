@@ -91,12 +91,12 @@ extension StickerListViewController: ESTNearableManagerDelegate {
 //        print("\(stickers)")
         tableView.reloadData()
         
-        //let sticker: Sticker = stickers[nearable.identifier]!
+        let sticker: Sticker = stickers[nearable.identifier]!
         
-        //let acc: Double = round(sqrt(Double(sticker.xAcceleration * sticker.xAcceleration + sticker.yAcceleration * sticker.yAcceleration + sticker.zAcceleration * sticker.zAcceleration))*1000)/1000
+        let acc: Double = round(sqrt(Double(sticker.xAcceleration * sticker.xAcceleration + sticker.yAcceleration * sticker.yAcceleration + sticker.zAcceleration * sticker.zAcceleration))*1000)/1000
 
-        
-        //ESAPIManager.LogStickerData(sticker.identifier, name: sticker.name, inMotion: sticker.isMoving, currentState: Int(sticker.currentState)!, previousState: Int(sticker.previousState)!, acceleration: acc)
+        //ESAPIManager.GetEvents()
+        ESAPIManager.LogStickerData(sticker.identifier, name: sticker.name, inMotion: sticker.isMoving, currentState: Int(sticker.currentState)!, previousState: Int(sticker.previousState)!, acceleration: acc)
         
         NSNotificationCenter.defaultCenter().postNotificationName("motionIndicator", object: motionDict)
     }
