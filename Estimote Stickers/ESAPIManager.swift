@@ -11,7 +11,7 @@ import Alamofire
 import PromiseKit
 
 class ESAPIManager {
-    static let baseUrl: String = "http://ec2-107-20-74-207.compute-1.amazonaws.com:3000"
+    static let baseUrl: String = "http://ec2-54-161-116-6.compute-1.amazonaws.com:3000"
     
     static func GetEvents() -> Promise<[NSObject: AnyObject]> {
         return Promise{ fulfill, reject in

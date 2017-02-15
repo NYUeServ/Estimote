@@ -12,14 +12,23 @@ import SnapKit
 class StickerListViewController: UIViewController {
     
     // MARK: - Properties
+    var alert: UIAlertController?
+
     var stickers: [String: Sticker] = [:]
     var motionDict: [String: [AnyObject]] = [:]
     var stickerIDs: [String] = [
-        "ffef5d066c5ff1dc",  
+        "ffef5d066c5ff1dc",
         "1efc245022695d3c",
         "8630e65d853d2aa2"
     ]
     
+    lazy var addButton: UIBarButtonItem = {
+        var button: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addTapped))
+        button.tintColor = UIColor.whiteColor()
+        return button
+    }()
+    
+//    lazy var 
     lazy var nearableManager: ESTNearableManager = {
         var manager: ESTNearableManager = ESTNearableManager()
         manager.delegate = self
@@ -30,6 +39,7 @@ class StickerListViewController: UIViewController {
     // MARK: - UI Element(s)
     lazy var tableView: UITableView = {
         var table: UITableView = UITableView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        table.rowHeight = 75.0
         table.delegate = self
         table.dataSource = self
         table.registerClass(StickerCell.self, forCellReuseIdentifier: "stickerCell")
@@ -50,6 +60,7 @@ class StickerListViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.title = "NYU Estimote Stickers"
+        self.navigationItem.rightBarButtonItem = addButton
         self.edgesForExtendedLayout = .None
         self.view.backgroundColor = UIColor.whiteColor()
         
@@ -70,12 +81,49 @@ class StickerListViewController: UIViewController {
         }
         super.updateViewConstraints()
     }
+    
+    // MARK: - Selector methods
+    func addTapped(sender: UIBarButtonItem) {
+        alert = UIAlertController(title: "Add Sticker",
+                                  message: "Please enter your sticker ID",
+                                  preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let add = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (action: UIAlertAction) in
+            if let alertTextField = self.alert!.textFields?.first where alertTextField.text != nil {
+                if alertTextField.text != "" {
+                    self.stickerIDs.append(alertTextField.text!)
+                    self.nearableManager.startRangingForIdentifier(alertTextField.text!)
+                }
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        alert!.addTextFieldWithConfigurationHandler { (textField: UITextField) in
+            textField.placeholder = "Identifier"
+            textField.delegate = self
+            textField.addTarget(self, action: #selector(self.textChanged), forControlEvents: .EditingChanged)
+        }
+        
+        add.enabled = false
+        alert!.addAction(add)
+        alert!.addAction(cancel)
+        presentViewController(alert!, animated: true, completion: nil)
+    }
+    
+    func textChanged(sender: UITextField) {
+        if sender.text?.characters.count == 16 {
+            alert!.actions[0].enabled = true
+        } else {
+            alert!.actions[0].enabled = false
+        }
+    }
 }
 
 // MARK: - ESTNearableManagerDelegate
 extension StickerListViewController: ESTNearableManagerDelegate {
     func nearableManager(manager: ESTNearableManager, didRangeNearable nearable: ESTNearable) {
         stickers[nearable.identifier] = Sticker(nearable: nearable)
+        
         
         var info: [AnyObject] = []
         info.append(nearable.isMoving)
@@ -102,9 +150,17 @@ extension StickerListViewController: ESTNearableManagerDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
+extension StickerListViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        return false
+    }
+}
+
 // MARK: - UITableViewDelegate/UITableViewDataSource
 extension StickerListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(stickers.count)
         return stickers.count
     }
     
@@ -134,4 +190,14 @@ extension StickerListViewController: UITableViewDelegate, UITableViewDataSource 
         return UITableViewCell()
     }
 
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            let removed = stickerIDs[indexPath.item]
+            nearableManager.stopRangingForIdentifier(removed)
+            self.stickerIDs.removeAtIndex(indexPath.item)
+            self.stickers.removeValueForKey(removed)
+            self.motionDict.removeValueForKey(removed)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
 }

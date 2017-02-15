@@ -285,9 +285,7 @@ class StickerDetailViewController: UIViewController {
                 self.yAccelerationView.text = "Y Acceleration: \(arr[4] as! Int)"
                 self.zAccelerationView.text = "Z Acceleration: \(arr[5] as! Int)"
                 self.temperatureView.text = "Temperature: \(arr[6] as! Double)°C"
-
             }
-            
         }
     }
     
