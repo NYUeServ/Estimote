@@ -1,0 +1,15 @@
+PODS:
+  - Alamofire (4.4.0)
+  - EstimoteSDK (4.13.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - EstimoteSDK
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  EstimoteSDK: 207cc0d4fa7635023c75a490b2d6ee9a417377cb
+
+PODFILE CHECKSUM: 9fc1911e419c8f5cb22c0d572236cb33ec4b98f5
+
+COCOAPODS: 1.2.0

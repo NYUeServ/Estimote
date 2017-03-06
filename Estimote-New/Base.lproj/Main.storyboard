@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4jL-jC-bij">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sensors-->
+        <scene sceneID="Yij-oj-w1J">
+            <objects>
+                <tableViewController id="WzP-Sf-JBf" customClass="SensorsTableViewController" customModule="Estimote_New" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" sectionHeaderHeight="28" sectionFooterHeight="28" id="PUV-1K-Ucf">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sensorCell" id="9I6-Or-Hrm" customClass="SensorTableViewCell" customModule="Estimote_New" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="768" height="76"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9I6-Or-Hrm" id="lGz-2g-QQd">
+                                    <frame key="frameInset" width="768" height="75"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AU5-E0-26C">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="136" id="pwT-Zo-4Cb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                            <color key="textColor" red="0.34792384505271912" green="0.35137158632278442" blue="0.71791672706604004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwV-DH-eQK">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="CDj-Ge-stZ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OCCUPIED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kt6-bZ-9YG">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="AU5-E0-26C" firstAttribute="trailing" secondItem="cwV-DH-eQK" secondAttribute="trailing" id="3tJ-VK-iQp"/>
+                                        <constraint firstItem="AU5-E0-26C" firstAttribute="leading" secondItem="cwV-DH-eQK" secondAttribute="leading" id="7sP-uJ-bae"/>
+                                        <constraint firstItem="cwV-DH-eQK" firstAttribute="bottom" secondItem="lGz-2g-QQd" secondAttribute="bottomMargin" id="BEc-Zv-QFp"/>
+                                        <constraint firstItem="AU5-E0-26C" firstAttribute="top" secondItem="lGz-2g-QQd" secondAttribute="topMargin" id="Foc-ZG-gMo"/>
+                                        <constraint firstItem="kt6-bZ-9YG" firstAttribute="trailing" secondItem="lGz-2g-QQd" secondAttribute="trailingMargin" id="Sx6-Fz-YcG"/>
+                                        <constraint firstItem="cwV-DH-eQK" firstAttribute="top" secondItem="AU5-E0-26C" secondAttribute="bottom" constant="8" symbolic="YES" id="Ufs-Rg-eHo"/>
+                                        <constraint firstItem="kt6-bZ-9YG" firstAttribute="centerY" secondItem="lGz-2g-QQd" secondAttribute="centerY" id="VaS-Hq-h3T"/>
+                                        <constraint firstItem="AU5-E0-26C" firstAttribute="leading" secondItem="lGz-2g-QQd" secondAttribute="leadingMargin" id="kfa-z7-dU7"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="id" destination="cwV-DH-eQK" id="M33-F6-Qzn"/>
+                                    <outlet property="isOccupiedLabel" destination="kt6-bZ-9YG" id="ypK-Df-aJq"/>
+                                    <outlet property="name" destination="AU5-E0-26C" id="ySX-Po-PpV"/>
+                                    <segue destination="quH-L8-56S" kind="show" id="Dfi-8V-7bF"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WzP-Sf-JBf" id="gAe-jA-7gm"/>
+                            <outlet property="delegate" destination="WzP-Sf-JBf" id="d8h-Ob-htx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Sensors" id="Q2g-0j-S17">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="uDa-ee-Rvp">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="WzP-Sf-JBf" id="5RW-Tj-K3H"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="fJG-9P-S8J">
+                            <connections>
+                                <segue destination="phn-A6-uUh" kind="show" id="KiV-re-exF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6gn-lK-l6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628" y="38"/>
+        </scene>
+        <!--Sensor Name-->
+        <scene sceneID="LuO-Ow-ZXy">
+            <objects>
+                <viewController id="quH-L8-56S" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A5E-4L-PxD"/>
+                        <viewControllerLayoutGuide type="bottom" id="5fi-36-XrW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v4c-A9-G1U">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sensor Name" id="PmD-6d-WcI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aMn-9M-Qkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1627" y="736"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="BtC-Kv-Nog">
+            <objects>
+                <viewController id="phn-A6-uUh" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u7O-ne-pdg"/>
+                        <viewControllerLayoutGuide type="bottom" id="OfI-Xy-JLO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZLQ-Hv-sL4">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="KQC-9U-PDo">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="9od-MG-xKM"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4SG-lL-i1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2314" y="38"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RCt-f4-sPy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4jL-jC-bij" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4NO-1Q-MP0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WzP-Sf-JBf" kind="relationship" relationship="rootViewController" id="T7u-lW-nvZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YQ7-N0-iEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="936" y="38"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.34792384505271912" green="0.35137158632278442" blue="0.71791672706604004" alpha="1" colorSpace="calibratedRGB"/>
+</document>
