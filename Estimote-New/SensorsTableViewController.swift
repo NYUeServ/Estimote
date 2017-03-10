@@ -10,8 +10,10 @@ import UIKit
 
 class SensorsTableViewController: UITableViewController {
     
-    /// Array of sensors gathered from the SensorManager
-    var connectedSensors: [Sensor] = []
+    let sensorManager = SensorManager.sharedManager
+    
+    /// Maintained list of sensor IDs used to refernce `SensorManager.connectedSensors`
+    var connectedSensorIDs: [String] = []
     
     // MARK: - Initalizers
     
@@ -23,6 +25,9 @@ class SensorsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Begin Async updating of the sensor information
+        sensorManager.beginAsyncronousSensorUpdate(interval: 5, tableView: self.tableView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,9 +57,14 @@ class SensorsTableViewController: UITableViewController {
         
         // Add confirm action
         let confirm = UIAlertAction(title: "Confirm", style: .default) { (_) in
-            if let field = alert.textFields?[0] {
-                // GET THE TEXT
-                // TODO
+            if let field = alert.textFields?[0], let id = field.text {
+                // Add this sensor to the ones we wish to track
+                if let err = self.sensorManager.addSensor(id: id) {
+                    // Error occurred
+                    self.throwErrorMessage(title: "Sensor Connection Error", message: err)
+                } else {
+                    self.connectedSensorIDs.append(id)
+                }
             } else {
                 // Field not filled, do nothing
             }
@@ -85,15 +95,21 @@ class SensorsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return connectedSensors.count
+        return connectedSensorIDs.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sensorCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sensorCell", for: indexPath) as! SensorTableViewCell
+        let sensor = sensorManager.connectedSensors[connectedSensorIDs[indexPath.row]]
         
-        // TODO: Configure Cell
+        cell.name.text = sensor?.name
+        cell.id.text = sensor?.identifier
         
+        // If the sensor currently has an error, show the button to present that
+        if sensor?.currentError != nil {
+            cell.warningButton.isHidden = false
+        }
 
         return cell
     }
@@ -102,9 +118,10 @@ class SensorsTableViewController: UITableViewController {
     // the SensorManager and remove it from the connectedSensors array
     override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
-            print("Delete button pressed")
-            
-            // TODO: Delete cell at index path
+            // Remove connection info for sensor from array and dictionary
+            print("[ INF ] Deleting connection info for sensor")
+            self.sensorManager.removeSensor(id: self.connectedSensorIDs[editActionsForRowAt.row])
+            self.connectedSensorIDs.remove(at: editActionsForRowAt.row)
         }
         delete.backgroundColor = .red
         

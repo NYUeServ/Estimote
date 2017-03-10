@@ -21,6 +21,10 @@ class Sensor: NSObject {
     var xAcceleration: Int
     var yAcceleration: Int
     var zAcceleration: Int
+    var acc: Double {
+        return round(sqrt(Double(xAcceleration * xAcceleration + yAcceleration *
+            yAcceleration + zAcceleration * zAcceleration))*1000)/1000
+    }
     
     // States
     var isMoving:      Bool
@@ -33,6 +37,9 @@ class Sensor: NSObject {
     var identifier: String
     var type:       String
     var color:      String
+    
+    // Error Handling
+    var currentError:String?
     
     init(nearable: ESTNearable) {
         

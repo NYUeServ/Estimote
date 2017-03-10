@@ -19,10 +19,13 @@ class SensorTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var id: UILabel!
     @IBOutlet weak var isOccupiedLabel: UILabel!
+    @IBOutlet weak var warningButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        warningButton.isHidden = true
         
         if isOccupied {
             isOccupiedLabel.text = "OCCUPIED"
@@ -33,8 +36,11 @@ class SensorTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
+    @IBAction func warningButtonPressed(_ sender: AnyObject) {
+        // TODO: Present a pop-up with warning info
+    }
+    
 
 }
