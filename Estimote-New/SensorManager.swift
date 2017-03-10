@@ -40,7 +40,6 @@ final class SensorManager: NSObject, ESTNearableManagerDelegate {
     // Initializer is private to prevent multiple instances
     override private init() {
         super.init()
-        
         nearableManager.delegate = self
     }
     
@@ -61,12 +60,13 @@ final class SensorManager: NSObject, ESTNearableManagerDelegate {
         
         // Wait for range request to complete or fail
         // Lock the async thread from executing while adding
-        switch rangeSemaphore.wait(timeout: .now() + 5.0) {
+        switch self.rangeSemaphore.wait(timeout: .now() + 5.0) {
         case .success:
-            defer { currentError = nil }
-            return currentError
+            defer { self.currentError = nil }
+            return self.currentError
         case .timedOut:
-            return "Request Timed Out"
+            defer { self.currentError = nil }
+            return self.currentError
         }
     }
     
@@ -83,31 +83,6 @@ final class SensorManager: NSObject, ESTNearableManagerDelegate {
         connectedSensors.removeValue(forKey: id)
     }
     
-//    /**
-//     
-//     Will ping information from each sensor in `connectedSensors` and
-//     update their sensor values. Also updates the sensors with any errors
-//     they may have encountered
-//     
-//     - Returns: `nil`
-//     
-//     */
-//    func updateSensorValues() {
-//        print("[ INF ] Updating Sensors")
-//        for (id, sensor) in connectedSensors {
-//             DispatchQueue.global(qos: .userInitiated).async {
-//                self.nearableManager.startRanging(forIdentifier: id)
-//            }
-//            
-//            // Check for errors
-//            // If range for this sensor failed, add that error to its
-//            // currentError
-//            rangeSemaphore.wait()
-//            sensor.currentError = currentError
-//            currentError = nil
-//        }
-//    }
-    
     // MARK: - Ranging Delegate Methods
     
     func nearableManager(_ manager: ESTNearableManager, didRangeNearable nearable: ESTNearable) {
@@ -123,48 +98,7 @@ final class SensorManager: NSObject, ESTNearableManagerDelegate {
         if error.localizedDescription != "Blueooth is not powerd on." {
             print("[ ERR ] Ranging failed: " + error.localizedDescription)
             self.currentError = error.localizedDescription
+            self.rangeSemaphore.signal()
         }
-        self.rangeSemaphore.signal()
     }
-    
-//    // MARK: - Monitoring Methods
-//    
-//    /**
-//     
-//     Spawns an asyncronous loop that calls `updateSensorValues()` for
-//     every `interval` provided. Will mutate `connectedSensors`
-//     
-//     - Parameter interval:  The number of seconds between sensor reading calls
-//     _ Parameter tableView: Reference to a `tableView` object to update
-//     
-//     - Returns: `nil`
-//     
-//     */
-//    func beginAsyncronousSensorUpdate(interval: UInt32, tableView: UITableView?) {
-//        backgroundThreadIsOn = true
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            // Background thread
-//            while self.backgroundThreadIsOn {
-//                // Update sensors while
-//                print("reloading table")
-//                tableView?.reloadData()
-//                sleep(interval)
-//            }
-//            
-//            print("Async sensor updater stopping")
-//            return
-//        }
-//    }
-//
-//    /**
-//     
-//     Terminates the asyncronous loop that calls `updateSensorValues()`
-//     
-//     - Returns: `nil`
-//     
-//     */
-//    func stopAsyncronousSensorUpdate() {
-//        backgroundThreadIsOn = false
-//    }
-
 }

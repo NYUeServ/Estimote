@@ -9,10 +9,13 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +24,16 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /**
+     
+     Writes to UserDefaults to save the settings under this view controller
+     
+     - Returns: `nil`
+     
+     */
+    func saveSettings() {
+        
+    }
 
     /*
     // MARK: - Navigation

@@ -9,10 +9,6 @@
 import UIKit
 
 class SensorTableViewCell: UITableViewCell {
-
-    // MARK: - Cell Properties
-    
-    var isOccupied: Bool = false
     
     // MARK: - Cell Outlets
     
@@ -24,14 +20,7 @@ class SensorTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
         warningButton.isHidden = true
-        
-        if isOccupied {
-            isOccupiedLabel.text = "OCCUPIED"
-        } else {
-            isOccupiedLabel.text = "UNOCCUPIED"
-        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

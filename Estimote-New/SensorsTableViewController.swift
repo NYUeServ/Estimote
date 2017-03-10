@@ -10,7 +10,7 @@ import UIKit
 
 class SensorsTableViewController: UITableViewController {
     
-    let sensorManager = SensorManager.sharedManager
+    private let sensorManager = SensorManager.sharedManager
     
     /// Maintained list of sensor IDs used to refernce `SensorManager.connectedSensors`
     var connectedSensorIDs: [String] = []
@@ -19,6 +19,11 @@ class SensorsTableViewController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.loadSensorIDs()
+        
+        for s in connectedSensorIDs {
+            sensorManager.nearableManager.startRanging(forIdentifier: s)
+        }
     }
     
     // MARK: - View Handlers
@@ -78,6 +83,7 @@ class SensorsTableViewController: UITableViewController {
                     // Error did not occur, commit ID and reload table
                     self.connectedSensorIDs.append(id)
                     self.tableView.reloadData()
+                    self.saveSensorIDs()
                 }
             } else {
                 // Field not filled, do nothing
@@ -124,7 +130,23 @@ class SensorsTableViewController: UITableViewController {
         if sensor?.currentError != nil {
             cell.warningButton.isHidden = false
         }
-
+        
+        // Display loading if needed
+        if sensor?.name == nil || sensor?.identifier == nil {
+            cell.isOccupiedLabel.text = "Loading"
+            cell.isOccupiedLabel.textColor = .purple
+        } else {
+            // Set occupancy
+            let occupancy = true // TODO
+            if occupancy {
+                cell.isOccupiedLabel.text = "Occupied"
+                cell.isOccupiedLabel.textColor = .red
+            } else {
+                cell.isOccupiedLabel.text = "Unoccupied"
+                cell.isOccupiedLabel.textColor = .green
+            }
+        }
+        
         return cell
     }
     
@@ -137,6 +159,7 @@ class SensorsTableViewController: UITableViewController {
             self.tableView.deleteRows(at: [index], with: .fade)
             self.sensorManager.removeSensor(id: self.connectedSensorIDs[index.row])
             self.connectedSensorIDs.remove(at: editActionsForRowAt.row)
+            self.saveSensorIDs()
             self.tableView.reloadData()
         }
         delete.backgroundColor = .red
@@ -148,6 +171,35 @@ class SensorsTableViewController: UITableViewController {
         return true
     }
     
+    // MARK: - Saving
+    
+    /**
+     
+     Save the array of tracked sensors to User Defaults
+     
+     - Returns: `nil`
+     
+     */
+    func saveSensorIDs() {
+        let defaults = UserDefaults.standard
+        defaults.set(self.connectedSensorIDs, forKey: "sensors")
+    }
+
+    /**
+     
+     Lost the array of tracked sensors from User Defaults
+     
+     - Returns: `nil`
+     
+     */
+    func loadSensorIDs() {
+        let defaults = UserDefaults.standard
+        if let ids = defaults.array(forKey: "sensors") {
+            for s in ids {
+                self.connectedSensorIDs.append(s as! String)
+            }
+        }
+    }
     
     // MARK: - Navigation
 

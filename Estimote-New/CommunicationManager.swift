@@ -20,9 +20,11 @@ final class CommunicationManager: NSObject {
     /// Singleton declaration
     static let sharedManager = CommunicationManager()
     
+    /// URL where states will be uploaded
+    let baseUrl: String = "http://ec2-54-161-116-6.compute-1.amazonaws.com:3000"
+    
     // Initializer is private to prevent multiple instances
     override private init() {
         super.init()
     }
-
 }
