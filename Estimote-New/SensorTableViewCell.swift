@@ -38,6 +38,7 @@ class SensorTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    // Displays a pop-up view with the encountered error
     @IBAction func warningButtonPressed(_ sender: AnyObject) {
         // TODO: Present a pop-up with warning info
     }

@@ -10,15 +10,38 @@ import UIKit
 
 class SensorViewController: UIViewController {
 
+    // MARK: - Class Properties
+    
+    let sensorManager = SensorManager.sharedManager
+    
+    var currentSensorID: String!
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var id: UILabel!
+    @IBOutlet weak var accel: UILabel!
+    @IBOutlet weak var temp: UILabel!
+    @IBOutlet weak var isMoving: UILabel!
+    @IBOutlet weak var currState: UILabel!
+    @IBOutlet weak var prevState: UILabel!
+    
+    
     // MARK: - Initializers
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+//        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        updateFields()
+        Timer.scheduledTimer(timeInterval: 1.0,
+                             target: self,
+                             selector: #selector(updateFields),
+                             userInfo: nil,
+                             repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +49,17 @@ class SensorViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func updateFields() {
+        if let sensor = sensorManager.connectedSensors[currentSensorID] {
+            self.title = sensor.name
+            id.text = sensor.identifier
+            accel.text = "X: \(sensor.xAcceleration) Y: \(sensor.yAcceleration) Z: \(sensor.zAcceleration)"
+            temp.text = "\(sensor.temperature) F"
+            isMoving.text = String(describing: sensor.isMoving)
+            currState.text = sensor.currentState
+            prevState.text = sensor.previousState
+        }
+    }
 
     /*
     // MARK: - Navigation

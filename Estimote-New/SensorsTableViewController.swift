@@ -26,8 +26,10 @@ class SensorsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Begin Async updating of the sensor information
-        sensorManager.beginAsyncronousSensorUpdate(interval: 5, tableView: self.tableView)
+        // Table refresh timer
+        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { _ in
+            self.tableView.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +37,16 @@ class SensorsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /**
+     
+     Standard function to show an error popup
+     
+     - Parameter title:     Title of popup
+     - Parameter message:   Message of popup
+     
+     - Returns: `nil`
+     
+     */
     func throwErrorMessage(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -63,7 +75,9 @@ class SensorsTableViewController: UITableViewController {
                     // Error occurred
                     self.throwErrorMessage(title: "Sensor Connection Error", message: err)
                 } else {
+                    // Error did not occur, commit ID and reload table
                     self.connectedSensorIDs.append(id)
+                    self.tableView.reloadData()
                 }
             } else {
                 // Field not filled, do nothing
@@ -120,8 +134,10 @@ class SensorsTableViewController: UITableViewController {
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
             // Remove connection info for sensor from array and dictionary
             print("[ INF ] Deleting connection info for sensor")
-            self.sensorManager.removeSensor(id: self.connectedSensorIDs[editActionsForRowAt.row])
+            self.tableView.deleteRows(at: [index], with: .fade)
+            self.sensorManager.removeSensor(id: self.connectedSensorIDs[index.row])
             self.connectedSensorIDs.remove(at: editActionsForRowAt.row)
+            self.tableView.reloadData()
         }
         delete.backgroundColor = .red
         
@@ -131,30 +147,19 @@ class SensorsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-
-    // TODO: Implement Navigation for Cells
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "toSensor" {
+            let dest = segue.destination as? SensorViewController
+            dest?.currentSensorID = connectedSensorIDs[(tableView.indexPathForSelectedRow?.row)!]
+        }
     }
-    */
+    
 
 }
