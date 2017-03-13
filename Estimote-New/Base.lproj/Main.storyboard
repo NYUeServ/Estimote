@@ -212,7 +212,7 @@
         <!--Settings-->
         <scene sceneID="BtC-Kv-Nog">
             <objects>
-                <viewController id="phn-A6-uUh" sceneMemberID="viewController">
+                <viewController id="phn-A6-uUh" customClass="SettingsViewController" customModule="Estimote_New" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u7O-ne-pdg"/>
                         <viewControllerLayoutGuide type="bottom" id="OfI-Xy-JLO"/>
@@ -220,15 +220,115 @@
                     <view key="view" contentMode="scaleToFill" id="ZLQ-Hv-sL4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bol-ax-m0q">
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Discover New Sensors"/>
+                                <connections>
+                                    <segue destination="ihL-gL-FEB" kind="show" id="qqT-Pq-6ZA"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logging Interval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sde-K4-MkU">
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <color key="textColor" red="0.34792384510000002" green="0.35137158629999998" blue="0.71791672709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4lO-Y3-Wvr">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="ekr-QH-42O"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(minutes)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2j2-MI-vba">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="i9u-zL-NIq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <color key="textColor" red="0.34792384510000002" green="0.35137158629999998" blue="0.71791672709999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Sde-K4-MkU" firstAttribute="centerX" secondItem="4lO-Y3-Wvr" secondAttribute="centerX" id="0up-zl-VCJ"/>
+                            <constraint firstItem="bol-ax-m0q" firstAttribute="trailing" secondItem="ZLQ-Hv-sL4" secondAttribute="trailingMargin" id="1uI-GB-82N"/>
+                            <constraint firstItem="2j2-MI-vba" firstAttribute="top" secondItem="4lO-Y3-Wvr" secondAttribute="bottom" constant="8" symbolic="YES" id="F3I-ca-VMS"/>
+                            <constraint firstItem="bol-ax-m0q" firstAttribute="leading" secondItem="ZLQ-Hv-sL4" secondAttribute="leadingMargin" id="IGV-hx-f92"/>
+                            <constraint firstItem="2j2-MI-vba" firstAttribute="centerX" secondItem="bol-ax-m0q" secondAttribute="centerX" id="aP4-dF-JnX"/>
+                            <constraint firstAttribute="bottom" secondItem="bol-ax-m0q" secondAttribute="bottom" constant="20" symbolic="YES" id="fvc-74-mJ2"/>
+                            <constraint firstItem="Sde-K4-MkU" firstAttribute="top" secondItem="u7O-ne-pdg" secondAttribute="bottom" constant="8" symbolic="YES" id="oJE-T5-3yf"/>
+                            <constraint firstItem="4lO-Y3-Wvr" firstAttribute="trailing" secondItem="2j2-MI-vba" secondAttribute="trailing" id="rhK-Pe-Bt7"/>
+                            <constraint firstItem="4lO-Y3-Wvr" firstAttribute="leading" secondItem="2j2-MI-vba" secondAttribute="leading" id="xlx-do-dTD"/>
+                            <constraint firstItem="4lO-Y3-Wvr" firstAttribute="top" secondItem="Sde-K4-MkU" secondAttribute="bottom" constant="8" symbolic="YES" id="yUx-32-8tv"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="KQC-9U-PDo">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="9od-MG-xKM"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="9od-MG-xKM">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="phn-A6-uUh" id="xP0-Hu-KDG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="loggingIntervalField" destination="4lO-Y3-Wvr" id="WF4-F5-soS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SG-lL-i1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2314" y="38"/>
+            <point key="canvasLocation" x="2328.8000000000002" y="36.431784107946029"/>
+        </scene>
+        <!--New Sensors-->
+        <scene sceneID="nr2-fX-TeQ">
+            <objects>
+                <tableViewController id="ihL-gL-FEB" customClass="NewSensorsTableViewController" customModule="Estimote_New" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" id="UOZ-Xm-RFQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newSensorCell" textLabel="5NZ-Eu-aKQ" detailTextLabel="ey6-Jq-dHm" style="IBUITableViewCellStyleSubtitle" id="Cbq-ic-AHM">
+                                <rect key="frame" x="0.0" y="92" width="375" height="78"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cbq-ic-AHM" id="vo4-EH-TkU">
+                                    <frame key="frameInset" width="375" height="77.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5NZ-Eu-aKQ">
+                                            <frame key="frameInset" minX="15" minY="22" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ey6-Jq-dHm">
+                                            <frame key="frameInset" minX="15" minY="42.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ihL-gL-FEB" id="Uwe-Ww-L0h"/>
+                            <outlet property="delegate" destination="ihL-gL-FEB" id="2Tv-Wj-dpu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New Sensors" id="bqG-zf-AVs">
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="l60-yw-MgP">
+                            <connections>
+                                <action selector="refreshPressed:" destination="ihL-gL-FEB" id="10k-0x-W0X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XIU-y9-bqX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3073" y="37"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RCt-f4-sPy">

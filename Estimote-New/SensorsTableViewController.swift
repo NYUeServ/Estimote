@@ -13,17 +13,16 @@ class SensorsTableViewController: UITableViewController {
     private let sensorManager = SensorManager.sharedManager
     
     /// Maintained list of sensor IDs used to refernce `SensorManager.connectedSensors`
-    var connectedSensorIDs: [String] = []
+    var connectedSensorIDs: [String]
     
     // MARK: - Initalizers
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.loadSensorIDs()
         
-        for s in connectedSensorIDs {
-            sensorManager.nearableManager.startRanging(forIdentifier: s)
-        }
+        // Attach tracked sensors
+        connectedSensorIDs = sensorManager.trackingSensorIDs
+        
+        super.init(coder: aDecoder)
     }
     
     // MARK: - View Handlers
@@ -36,10 +35,15 @@ class SensorsTableViewController: UITableViewController {
             self.tableView.reloadData()
         })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        refresh()
+    }
+    
+    func refresh() {
+        // Attach tracked sensors array
+        connectedSensorIDs = sensorManager.trackingSensorIDs
+        tableView.reloadData()
     }
     
     /**
@@ -76,17 +80,11 @@ class SensorsTableViewController: UITableViewController {
         let confirm = UIAlertAction(title: "Confirm", style: .default) { (_) in
             if let field = alert.textFields?[0], let id = field.text {
                 // Add this sensor to the ones we wish to track
-                if let err = self.sensorManager.addSensor(id: id) {
+                if let error = self.sensorManager.addSensor(id: id) {
                     // Error occurred
-                    self.throwErrorMessage(title: "Sensor Connection Error", message: err)
-                } else {
-                    // Error did not occur, commit ID and reload table
-                    self.connectedSensorIDs.append(id)
-                    self.tableView.reloadData()
-                    self.saveSensorIDs()
+                    self.throwErrorMessage(title: "Sensor Connection Error", message: error)
                 }
-            } else {
-                // Field not filled, do nothing
+                self.refresh()
             }
         }
         
@@ -104,7 +102,6 @@ class SensorsTableViewController: UITableViewController {
         
         // Present the alert
         self.present(alert, animated: true, completion: nil)
-        
     }
     
 
@@ -118,7 +115,6 @@ class SensorsTableViewController: UITableViewController {
         return connectedSensorIDs.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sensorCell", for: indexPath) as! SensorTableViewCell
         let sensor = sensorManager.connectedSensors[connectedSensorIDs[indexPath.row]]
@@ -155,12 +151,8 @@ class SensorsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
             // Remove connection info for sensor from array and dictionary
-            print("[ INF ] Deleting connection info for sensor")
-            self.tableView.deleteRows(at: [index], with: .fade)
             self.sensorManager.removeSensor(id: self.connectedSensorIDs[index.row])
-            self.connectedSensorIDs.remove(at: editActionsForRowAt.row)
-            self.saveSensorIDs()
-            self.tableView.reloadData()
+            self.refresh()
         }
         delete.backgroundColor = .red
         
@@ -169,36 +161,6 @@ class SensorsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-    }
-    
-    // MARK: - Saving
-    
-    /**
-     
-     Save the array of tracked sensors to User Defaults
-     
-     - Returns: `nil`
-     
-     */
-    func saveSensorIDs() {
-        let defaults = UserDefaults.standard
-        defaults.set(self.connectedSensorIDs, forKey: "sensors")
-    }
-
-    /**
-     
-     Lost the array of tracked sensors from User Defaults
-     
-     - Returns: `nil`
-     
-     */
-    func loadSensorIDs() {
-        let defaults = UserDefaults.standard
-        if let ids = defaults.array(forKey: "sensors") {
-            for s in ids {
-                self.connectedSensorIDs.append(s as! String)
-            }
-        }
     }
     
     // MARK: - Navigation
@@ -212,6 +174,4 @@ class SensorsTableViewController: UITableViewController {
             dest?.currentSensorID = connectedSensorIDs[(tableView.indexPathForSelectedRow?.row)!]
         }
     }
-    
-
 }

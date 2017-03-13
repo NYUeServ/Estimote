@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SensorManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/SensorManager" class="dashAnchor"></a>
+    <a title="SensorManager Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (56% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        SensorManager Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CommunicationManager.html">CommunicationManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C12Estimote_New13DataProcessor">DataProcessor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/LogManager.html">LogManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C12Estimote_New6Sensor">Sensor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SensorManager.html">SensorManager</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SensorManager</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">SensorManager</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">ESTNearableManagerDelegate</span></code></pre>
+
+                </div>
+              </div>
+            <p>The <code>SensorManager</code> is a singleton class that controls communication
+with the Estimote sensors, and manages a list of these sensors. The
+class is indented to update the sensors asyncronously, and their infomration
+can be read from the <code>connectedSensors</code> array</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Class%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Class Properties" class="dashAnchor"></a>
+                <a href="#/Class%20Properties">
+                  <h3 class="section-name">Class Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC12Estimote_New13SensorManager13sharedManagerS0_"></a>
+                    <a name="//apple_ref/swift/Variable/sharedManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC12Estimote_New13SensorManager13sharedManagerS0_">sharedManager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Singleton declaration</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">sharedManager</span> <span class="o">=</span> <span class="kt">SensorManager</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC12Estimote_New13SensorManager15nearableManagerCSo18ESTNearableManager"></a>
+                    <a name="//apple_ref/swift/Property/nearableManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC12Estimote_New13SensorManager15nearableManagerCSo18ESTNearableManager">nearableManager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Nearable manager for Estimote sensors</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">let</span> <span class="nv">nearableManager</span> <span class="o">=</span> <span class="kt">ESTNearableManager</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC12Estimote_New13SensorManager17trackingSensorIDsGSaSS_"></a>
+                    <a name="//apple_ref/swift/Property/trackingSensorIDs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC12Estimote_New13SensorManager17trackingSensorIDsGSaSS_">trackingSensorIDs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The IDs of the sensors that the user explicitly added</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">trackingSensorIDs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC12Estimote_New13SensorManager16connectedSensorsGVs10DictionarySSCS_6Sensor_"></a>
+                    <a name="//apple_ref/swift/Property/connectedSensors" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC12Estimote_New13SensorManager16connectedSensorsGVs10DictionarySSCS_6Sensor_">connectedSensors</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The currently connected sensors from which to pull data</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">connectedSensors</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt"><a href="../Classes.html#/s:C12Estimote_New6Sensor">Sensor</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[:]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC12Estimote_New13SensorManager18foundSensorsBufferGSqGVs10DictionarySSCS_6Sensor__"></a>
+                    <a name="//apple_ref/swift/Property/foundSensorsBuffer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC12Estimote_New13SensorManager18foundSensorsBufferGSqGVs10DictionarySSCS_6Sensor__">foundSensorsBuffer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>When searching for all Nearable sensors, the ones discovered can be found here</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">foundSensorsBuffer</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span><span class="kt"><a href="../Classes.html#/s:C12Estimote_New6Sensor">Sensor</a></span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC12Estimote_New13SensorManager12currentErrorGSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/currentError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC12Estimote_New13SensorManager12currentErrorGSqSS_">currentError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Holds any current error returned by the ESTNearableManager</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">currentError</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Sensor%20Initialization"></a>
+                <a name="//apple_ref/swift/Section/Sensor Initialization" class="dashAnchor"></a>
+                <a href="#/Sensor%20Initialization">
+                  <h3 class="section-name">Sensor Initialization</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New13SensorManager9addSensorFT2idSS_GSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/addSensor(id:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New13SensorManager9addSensorFT2idSS_GSqSS_">addSensor(id:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Will append <code><a href="../Classes/SensorManager.html#/s:vC12Estimote_New13SensorManager16connectedSensorsGVs10DictionarySSCS_6Sensor_">connectedSensors</a></code> with a new <code><a href="../Classes.html#/s:C12Estimote_New6Sensor">Sensor</a></code> object upon
+successful connection to the sensor with the specified ID</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">addSensor</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ID of the sensor to be connected</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>nil</code></p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New13SensorManager12removeSensorFT2idSS_T_"></a>
+                    <a name="//apple_ref/swift/Method/removeSensor(id:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New13SensorManager12removeSensorFT2idSS_T_">removeSensor(id:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Safely removes a sensor from the <code><a href="../Classes/SensorManager.html#/s:vC12Estimote_New13SensorManager16connectedSensorsGVs10DictionarySSCS_6Sensor_">connectedSensors</a></code> array</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">removeSensor</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>String with identifier of Estimote sensor</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>nil</code></p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Ranging%20Delegate%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Ranging Delegate Methods" class="dashAnchor"></a>
+                <a href="#/Ranging%20Delegate%20Methods">
+                  <h3 class="section-name">Ranging Delegate Methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New13SensorManager15nearableManagerFTCSo18ESTNearableManager16didRangeNearableCSo11ESTNearable_T_"></a>
+                    <a name="//apple_ref/swift/Method/nearableManager(_:didRangeNearable:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New13SensorManager15nearableManagerFTCSo18ESTNearableManager16didRangeNearableCSo11ESTNearable_T_">nearableManager(_:didRangeNearable:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Ran when a sensor successfully reports its data</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">nearableManager</span><span class="p">(</span><span class="n">_</span> <span class="nv">manager</span><span class="p">:</span> <span class="kt">ESTNearableManager</span><span class="p">,</span> <span class="n">didRangeNearable</span> <span class="nv">nearable</span><span class="p">:</span> <span class="kt">ESTNearable</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>manager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The nearable manager</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>nearable</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The found nearable</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>nil</code></p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New13SensorManager15nearableManagerFTCSo18ESTNearableManager22rangingFailedWithErrorPs5Error__T_"></a>
+                    <a name="//apple_ref/swift/Method/nearableManager(_:rangingFailedWithError:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New13SensorManager15nearableManagerFTCSo18ESTNearableManager22rangingFailedWithErrorPs5Error__T_">nearableManager(_:rangingFailedWithError:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Runs when the manager encounters an error when ranging</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">nearableManager</span><span class="p">(</span><span class="n">_</span> <span class="nv">manager</span><span class="p">:</span> <span class="kt">ESTNearableManager</span><span class="p">,</span> <span class="n">rangingFailedWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>manager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The nearable manager</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The reported error for failure</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>nil</code></p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New13SensorManager15nearableManagerFTCSo18ESTNearableManager17didRangeNearablesGSaCSo11ESTNearable_4withOSC15ESTNearableType_T_"></a>
+                    <a name="//apple_ref/swift/Method/nearableManager(_:didRangeNearables:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New13SensorManager15nearableManagerFTCSo18ESTNearableManager17didRangeNearablesGSaCSo11ESTNearable_4withOSC15ESTNearableType_T_">nearableManager(_:didRangeNearables:with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Runs when the manager is instructed to range for all nearables
+in the area</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">nearableManager</span><span class="p">(</span><span class="n">_</span> <span class="nv">manager</span><span class="p">:</span> <span class="kt">ESTNearableManager</span><span class="p">,</span> <span class="n">didRangeNearables</span> <span class="nv">nearables</span><span class="p">:</span> <span class="p">[</span><span class="kt">ESTNearable</span><span class="p">],</span> <span class="n">with</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">ESTNearableType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>manager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The nearable manager</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>nearables</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The found nearables</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>nil</code></p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Saving"></a>
+                <a name="//apple_ref/swift/Section/Saving" class="dashAnchor"></a>
+                <a href="#/Saving">
+                  <h3 class="section-name">Saving</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New13SensorManager13saveSensorIDsFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/saveSensorIDs()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New13SensorManager13saveSensorIDsFT_T_">saveSensorIDs()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Save the array of tracked sensors to User Defaults</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">saveSensorIDs</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>nil</code></p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New13SensorManager13loadSensorIDsFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/loadSensorIDs()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New13SensorManager13loadSensorIDsFT_T_">loadSensorIDs()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Lost the array of tracked sensors from User Defaults</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">loadSensorIDs</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>nil</code></p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-03-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

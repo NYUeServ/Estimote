@@ -20,6 +20,7 @@
 		496CDDCE1E6DC8EB009C348C /* SensorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CDDCD1E6DC8EB009C348C /* SensorManager.swift */; };
 		496CDDD01E6DC923009C348C /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CDDCF1E6DC923009C348C /* CommunicationManager.swift */; };
 		496CDDD41E6DE0DC009C348C /* DataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CDDD31E6DE0DC009C348C /* DataProcessor.swift */; };
+		4997B4EC1E75EE8100DC8970 /* NewSensorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4997B4EB1E75EE8100DC8970 /* NewSensorsTableViewController.swift */; };
 		8BB8302115A1CBCC727ACF93 /* Pods_Estimote_New.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E865C3C42BE83BE69EC971D5 /* Pods_Estimote_New.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		496CDDCF1E6DC923009C348C /* CommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 		496CDDD21E6DCB73009C348C /* ObjCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		496CDDD31E6DE0DC009C348C /* DataProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProcessor.swift; sourceTree = "<group>"; };
+		4997B4EB1E75EE8100DC8970 /* NewSensorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSensorsTableViewController.swift; sourceTree = "<group>"; };
 		607F6AF4BAB56B83CDB78955 /* Pods-Estimote-New.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estimote-New.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Estimote-New/Pods-Estimote-New.debug.xcconfig"; sourceTree = "<group>"; };
 		7290BCA2690B7924CA96363E /* Pods-Estimote-New.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Estimote-New.release.xcconfig"; path = "Pods/Target Support Files/Pods-Estimote-New/Pods-Estimote-New.release.xcconfig"; sourceTree = "<group>"; };
 		E865C3C42BE83BE69EC971D5 /* Pods_Estimote_New.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Estimote_New.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +108,7 @@
 				496CDDBF1E6DC7FC009C348C /* SensorsTableViewController.swift */,
 				496CDDC31E6DC848009C348C /* SensorViewController.swift */,
 				496CDDC11E6DC80D009C348C /* SettingsViewController.swift */,
+				4997B4EB1E75EE8100DC8970 /* NewSensorsTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				496CDDCE1E6DC8EB009C348C /* SensorManager.swift in Sources */,
 				496CDDCC1E6DC8C1009C348C /* LogManager.swift in Sources */,
 				496CDDAE1E6DC544009C348C /* AppDelegate.swift in Sources */,
+				4997B4EC1E75EE8100DC8970 /* NewSensorsTableViewController.swift in Sources */,
 				496CDDC41E6DC848009C348C /* SensorViewController.swift in Sources */,
 				496CDDD41E6DE0DC009C348C /* DataProcessor.swift in Sources */,
 				496CDDC21E6DC80D009C348C /* SettingsViewController.swift in Sources */,

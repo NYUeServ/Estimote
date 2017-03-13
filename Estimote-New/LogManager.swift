@@ -47,7 +47,7 @@ final class LogManager: NSObject {
      
      */
     func startAutomaticLogging(interval: Int) {
-        print("[ INF ] Starting automatic logging")
+        print("[ INF ] Starting automatic logging with interval: \(interval)")
         logInterval = interval
         logTimer = Timer.scheduledTimer(timeInterval: Double(interval),
                                         target: self,
