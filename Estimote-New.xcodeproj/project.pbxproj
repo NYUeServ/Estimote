@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4917F26B1E79CE1B00B5ADF5 /* OccupancyDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917F26A1E79CE1B00B5ADF5 /* OccupancyDetector.swift */; };
 		496CDDAE1E6DC544009C348C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CDDAD1E6DC544009C348C /* AppDelegate.swift */; };
 		496CDDB31E6DC544009C348C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496CDDB11E6DC544009C348C /* Main.storyboard */; };
 		496CDDB51E6DC544009C348C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 496CDDB41E6DC544009C348C /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4917F26A1E79CE1B00B5ADF5 /* OccupancyDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccupancyDetector.swift; sourceTree = "<group>"; };
 		496CDDAA1E6DC544009C348C /* Estimote-New.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Estimote-New.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		496CDDAD1E6DC544009C348C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		496CDDB21E6DC544009C348C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				496CDDC91E6DC8A6009C348C /* Sensor.swift */,
 				496CDDCB1E6DC8C1009C348C /* LogManager.swift */,
 				496CDDD31E6DE0DC009C348C /* DataProcessor.swift */,
+				4917F26A1E79CE1B00B5ADF5 /* OccupancyDetector.swift */,
 				496CDDCD1E6DC8EB009C348C /* SensorManager.swift */,
 				496CDDCF1E6DC923009C348C /* CommunicationManager.swift */,
 			);
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				496CDDC01E6DC7FC009C348C /* SensorsTableViewController.swift in Sources */,
+				4917F26B1E79CE1B00B5ADF5 /* OccupancyDetector.swift in Sources */,
 				496CDDD01E6DC923009C348C /* CommunicationManager.swift in Sources */,
 				496CDDCA1E6DC8A6009C348C /* Sensor.swift in Sources */,
 				496CDDC71E6DC869009C348C /* SensorTableViewCell.swift in Sources */,

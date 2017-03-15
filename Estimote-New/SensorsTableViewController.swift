@@ -12,6 +12,8 @@ class SensorsTableViewController: UITableViewController {
     
     private let sensorManager = SensorManager.sharedManager
     
+    let occupancyDetector: OccupancyDetector
+    
     /// Maintained list of sensor IDs used to refernce `SensorManager.connectedSensors`
     var connectedSensorIDs: [String]
     
@@ -21,6 +23,12 @@ class SensorsTableViewController: UITableViewController {
         
         // Attach tracked sensors
         connectedSensorIDs = sensorManager.trackingSensorIDs
+        
+        // Init Occupancy Detector
+        let interruptDictionary = [ "cumulativeAcc": 1,
+                                    "isMoving": true ] as [String : Any]
+        self.occupancyDetector = OccupancyDetector(unoccupiedInterval: 8,
+                                                   interruptDictionary: interruptDictionary)
         
         super.init(coder: aDecoder)
     }
@@ -33,6 +41,11 @@ class SensorsTableViewController: UITableViewController {
         // Table refresh timer
         Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { _ in
             self.tableView.reloadData()
+        })
+        
+        // Update OD forever
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+            self.occupancyDetector.updateDictionaries()
         })
     }
     

@@ -25,6 +25,9 @@ class Sensor: NSObject {
         return round(sqrt(Double(xAcceleration * xAcceleration + yAcceleration *
             yAcceleration + zAcceleration * zAcceleration))*1000)/1000
     }
+    var cumulativeAcc: Int {
+        return xAcceleration + yAcceleration + zAcceleration
+    }
     
     // States
     var isMoving:      Bool
