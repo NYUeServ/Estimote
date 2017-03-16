@@ -95,4 +95,49 @@ class Sensor: NSObject {
         super.init()
     }
     
+    convenience override init() {
+        self.init(nearable: ESTNearable())
+        
+        self.xAcceleration = 0
+        self.yAcceleration = 0
+        self.zAcceleration = 0
+        self.isMoving      = false
+        self.temperature   = 0.0
+        self.identifier    = ""
+        self.name          = ""
+    }
+    
+}
+
+/**
+ 
+  Used to compare one (or two) sensor object(s) by comparing
+  the differences or using the thresholds defined in this struct.
+  All values default to nil and the user can choose the ones they
+  want to use by assiging them.
+ 
+ */
+struct SensorComparator {
+    
+    // Acceleration
+    var xAcceleration: Int?
+    var yAcceleration: Int?
+    var zAcceleration: Int?
+    
+    // States
+    var isMoving:      Bool?
+    var temperature:   Double?
+    var currentState:  String?
+    var previousState: String?
+    
+    var accelerationChangeThreshold: Int?
+    var temperatureChangeThreshold: Double?
+    
+    static func thresholdIntChange(val1: Int, val2: Int, threshold: Int) -> Bool {
+        return ((abs(val1) - abs(val2)) >= threshold)
+    }
+    
+    static func thresholdDoubleChange(val1: Double, val2: Double, threshold: Double) -> Bool {
+        return ((abs(val1) - abs(val2)) >= threshold)
+    }
 }

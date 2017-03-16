@@ -25,10 +25,11 @@ class SensorsTableViewController: UITableViewController {
         connectedSensorIDs = sensorManager.trackingSensorIDs
         
         // Init Occupancy Detector
-        let interruptDictionary = [ "cumulativeAcc": 1,
-                                    "isMoving": true ] as [String : Any]
+        var interruptValues = SensorComparator()
+        interruptValues.accelerationChangeThreshold = 1 // This test value is far too sensitive
+        interruptValues.isMoving = true
         self.occupancyDetector = OccupancyDetector(unoccupiedInterval: 8,
-                                                   interruptDictionary: interruptDictionary)
+                                                   interruptValues: interruptValues)
         
         super.init(coder: aDecoder)
     }
@@ -146,13 +147,16 @@ class SensorsTableViewController: UITableViewController {
             cell.isOccupiedLabel.textColor = .purple
         } else {
             // Set occupancy
-            let occupancy = true // TODO
-            if occupancy {
-                cell.isOccupiedLabel.text = "Occupied"
-                cell.isOccupiedLabel.textColor = .red
-            } else {
-                cell.isOccupiedLabel.text = "Unoccupied"
-                cell.isOccupiedLabel.textColor = .green
+            if let id = sensor?.identifier {
+                if let occupancy = occupancyDetector.occupancyDictionary[id] {
+                    if occupancy {
+                        cell.isOccupiedLabel.text = "Occupied"
+                        cell.isOccupiedLabel.textColor = .red
+                    } else {
+                        cell.isOccupiedLabel.text = "Unoccupied"
+                        cell.isOccupiedLabel.textColor = .green
+                    }
+                }
             }
         }
         

@@ -23,26 +23,16 @@ import UIKit
  */
 class OccupancyDetector: NSObject {
     
+    // MARK: - Class Propertise
+    
     /**
      
-     The interrupt dictionary will contain the states of an
-     Estimote sensor for which consitutes as "occupied"
-     If these values are found at all during a predefined interval,
-     then the sensor will be marked as "occupied" for that interval.
-     
-     - Example: `interruptDictionary["isMoving"] = true` Will trigger
-     a positive occupancy result for the current interval
-     
-     Supported types: String (isEqual),       Int (isGreaterThan),
-                      Double (isGreaterThan), Bool (isEqual)
+     The interrupt values and threshold values for which
+     action is to be taken if the defined conditions are met 
+     for a sensor
      
      */
-    var interruptDictionary: [String: Any] = [:]
-    
-    // The defined update interval in **SECONDS**
-    private let unoccupiedInterval: Int
-    
-    private var previousSensorList: [String: Sensor] = [:]
+    var interruptValues: SensorComparator
     
     /// The current occupancy for all sensors (IDs)
     lazy var occupancyDictionary: [String: Bool] = [:]
@@ -50,18 +40,26 @@ class OccupancyDetector: NSObject {
     /// The cooldown timers for each sensor ID
     lazy var cooldownTimers: [String: Timer] = [:]
     
+    // The defined update interval in **SECONDS**
+    private let unoccupiedInterval: Int
+    
+    // The list of sensors from the previous or original reading
+    private var previousSensorList: [String: Sensor] = [:]
+    
     private let sensorManager = SensorManager.sharedManager
     
     // MARK: - Initializers
     
     /// Initializes with an update interval in **MINUTES**
-    init(unoccupiedInterval: Int, interruptDictionary: [String: Any]) {
+    init(unoccupiedInterval: Int, interruptValues: SensorComparator) {
+        
+        print("[ INF ] Starting Occupancy Detector")
         
         // Init update interval in seconds
         self.unoccupiedInterval = unoccupiedInterval * 60
         
-        // Init interrupt dictionary
-        self.interruptDictionary = interruptDictionary
+        // Init interrupt value (Sensor Comparator)
+        self.interruptValues = interruptValues
         
         // Init self
         super.init()
@@ -75,8 +73,6 @@ class OccupancyDetector: NSObject {
         
         // Get first state of sensors
         previousSensorList = sensorManager.connectedSensors
-        
-        print("=== Detector init complete")
     }
     
     // MARK: - Timekeeping
@@ -105,68 +101,46 @@ class OccupancyDetector: NSObject {
             
         var occDict: [String: Bool] = [:]
         let currentSensors = self.sensorManager.connectedSensors
+        
         for (currentId, currentSensor) in currentSensors {
-            for (rule, threshold) in self.interruptDictionary {
-                var matchCount = 0
-                print("rule: \(rule)")
-                // Compare current sensor to its previous state
+            
+            var matchCount = 0
+            
+            // Check if its a new sensor
+            if self.previousSensorList.keys.contains(currentId) {
+                // Not new sensor
+                let prevSensor = self.previousSensorList[currentId]
                 
-                // Check if its a new sensor
-                if self.previousSensorList.keys.contains(currentId) {
-                    // Not new sensor
-                    let prevSensor = self.previousSensorList[currentId]
-                    if let comparison = currentSensor.value(forKey: rule) {
-                        print(currentSensor.isMoving)
-                        switch comparison {
-                            
-                        case is String:
-                            // Test equality to treshold
-                            if (threshold as! String == comparison as! String) { matchCount += 1 }
-                            
-                        case is Int:
-                            // Special case
-                            if rule == "cumulativeAcc" {
-                                if accelChange(acc1: prevSensor!.cumulativeAcc,
-                                               acc2: currentSensor.cumulativeAcc,
-                                               threshold: threshold as! Int)
-                                { matchCount += 1 }
-                                
-                            } else {
-                                print("t: \(threshold), c: \(comparison)")
-                                if (threshold as! Int) < (comparison as! Int) { matchCount += 1 } // TODO: Weird bug here with bools
-                                
-                            }
-                            
-                        case is Double:
-                            // Test greater than
-                            if (threshold as! Double) < (comparison as! Double)
-                            { matchCount += 1 }
-                            
-                        case is Bool:
-                            // Test equality
-                            if (threshold as! Bool) == (comparison as! Bool)
-                            { matchCount += 1 }
-                            
-                        default:
-                            // Error
-                            print("[ WRN ] Comparing unsupported types")
-                            
-                        }
-                    } else {
-                        print("[ ERR ] Invalid rule for occupancy comparison")
-                    }
-                } else {
-                    // New Sensor, no comparable data, skipping
+                // Check accel change
+                if let acc =  interruptValues.accelerationChangeThreshold {
+                    if SensorComparator.thresholdIntChange(val1: prevSensor!.cumulativeAcc,
+                                                           val2: currentSensor.cumulativeAcc,
+                                                           threshold: acc) { matchCount += 1 }
                 }
                 
-                // Set the current sensors as the prvious sensors
-                self.previousSensorList = currentSensors
+                // Check isMoving
+                if let mov = interruptValues.isMoving {
+                    if currentSensor.isMoving == mov { matchCount += 1 }
+                }
                 
-                // Commit occupancy states
-                occDict[currentId] = (matchCount > 0)
-                print("\(occDict) ====== END \(matchCount)")
+                // Check temperature
+                if let temp = interruptValues.temperatureChangeThreshold {
+                    if SensorComparator.thresholdDoubleChange(val1: prevSensor!.temperature,
+                                                              val2: currentSensor.temperature,
+                                                              threshold: temp) { matchCount += 1 }
+                }
+                
+            } else {
+                // New Sensor, no comparable data, skipping
             }
+            
+            // Set the current sensors as the prvious sensors
+            self.previousSensorList = currentSensors
+
+            // Commit occupancy states
+            occDict[currentId] = (matchCount > 0)
         }
+        
         return occDict
     }
     
@@ -198,7 +172,7 @@ class OccupancyDetector: NSObject {
             
             // If it's occupied, it needs a fresh timer
             if isOccupied {
-                print("\(id) is occupied and getting a fresh timer")
+                print("[ INF ] \(id) is occupied and getting a fresh timer")
                 coolDict[id]?.invalidate()
                 coolDict[id] = createCooldownTimer(sensorID: id)
             }
@@ -223,36 +197,28 @@ class OccupancyDetector: NSObject {
         let currentOccupancy = getCurrentOccupancyDictionary()
         let currentCooldownTimers = getCurrentCooldownTimers(forOccupancy: currentOccupancy)
 
-        for (id, isOccupied) in self.occupancyDictionary {
-            if currentOccupancy.keys.contains(id) {
-                // Keys exist in both old and current
-                // Update occupancy
-                self.occupancyDictionary[id] = currentOccupancy[id]!
+        // Fold in the current sensor values to list
+        for (id, _) in currentOccupancy {
+            if let occ = self.occupancyDictionary[id] {
+                // Only the timers should alter the values of
+                // occupied sensors
+                if !occ {
+                    self.occupancyDictionary[id] = currentOccupancy[id]!
+                }
             } else {
-                // There is an old key that is not in the current list
+                // Add in the new sensor value
+                self.occupancyDictionary[id] = currentOccupancy[id]!
+            }
+        }
+        
+        // Sanitize old sensors that are no longer tracked
+        for (id, _) in self.occupancyDictionary {
+            if !currentOccupancy.keys.contains(id) {
                 self.occupancyDictionary[id] = nil
             }
         }
         
+        // Set the cooldown timers
         self.cooldownTimers = currentCooldownTimers
-    }
-    
-    // MARK: - Value Comparison Toolkit
-    
-    /**
-     
-     Returns true if the difference of two cumulative acceleration 
-     value sums exceed the threshold value.
-     
-     - Parameter acc1: The first cumulative value of X,Y,Z acceleration
-     - Parameter acc2: The second cumulative value of X,Y,Z acceleration
-     - Parameter treshold: The maximum (inclusive) difference of the two sums,
-     above which a `true` value will be returned
-     
-     - Returns: `bool` Exceeded treshold
-     
-     */
-    func accelChange(acc1: Int, acc2: Int, threshold: Int) -> Bool {
-        return ((abs(acc1) - abs(acc2)) >= threshold)
     }
 }
