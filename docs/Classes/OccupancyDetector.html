@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OccupancyDetector Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/OccupancyDetector" class="dashAnchor"></a>
+    <a title="OccupancyDetector Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (32% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        OccupancyDetector Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CommunicationManager.html">CommunicationManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C12Estimote_New13DataProcessor">DataProcessor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/LogManager.html">LogManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NewSensorsTableViewController.html">NewSensorsTableViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OccupancyDetector.html">OccupancyDetector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Sensor.html">Sensor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SensorManager.html">SensorManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SensorTableViewCell.html">SensorTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SensorViewController.html">SensorViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SensorsTableViewController.html">SensorsTableViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SettingsViewController.html">SettingsViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/SensorComparator.html">SensorComparator</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>OccupancyDetector</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">OccupancyDetector</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>The <code>OccupancyDetector</code> class implements a set of
+methods that accept defined interrupts and calculates
+the <q>occupancy</q> for the chair in which the Estimote
+sensor is attached. This class will keep a constantly-updated
+list of connect sensors as a binary (1) occupied, or (0) unoccupied.
+This list will be forwarded to the AWS servers at defined intervals.
+Each <code><a href="../Classes/Sensor.html">Sensor</a></code> will get its own cooldown timer which ticks for the defined
+interval. It is reset if an iterrupt is detected. If it times out, the sensor
+is then considered unoccupied.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Class%20Propertise"></a>
+                <a name="//apple_ref/swift/Section/Class Propertise" class="dashAnchor"></a>
+                <a href="#/Class%20Propertise">
+                  <h3 class="section-name">Class Propertise</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC12Estimote_New17OccupancyDetector15interruptValuesVS_16SensorComparator"></a>
+                    <a name="//apple_ref/swift/Property/interruptValues" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC12Estimote_New17OccupancyDetector15interruptValuesVS_16SensorComparator">interruptValues</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The interrupt values and threshold values for which
+action is to be taken if the defined conditions are met 
+for a sensor</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">interruptValues</span><span class="p">:</span> <span class="kt"><a href="../Structs/SensorComparator.html">SensorComparator</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC12Estimote_New17OccupancyDetector19occupancyDictionaryGVs10DictionarySSSb_"></a>
+                    <a name="//apple_ref/swift/Property/occupancyDictionary" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC12Estimote_New17OccupancyDetector19occupancyDictionaryGVs10DictionarySSSb_">occupancyDictionary</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current occupancy for all sensors (IDs)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">lazy</span> <span class="k">var</span> <span class="nv">occupancyDictionary</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC12Estimote_New17OccupancyDetector14cooldownTimersGVs10DictionarySSCSo5Timer_"></a>
+                    <a name="//apple_ref/swift/Property/cooldownTimers" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC12Estimote_New17OccupancyDetector14cooldownTimersGVs10DictionarySSCSo5Timer_">cooldownTimers</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The cooldown timers for each sensor ID</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">lazy</span> <span class="k">var</span> <span class="nv">cooldownTimers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Timer</span><span class="p">]</span> <span class="o">=</span> <span class="p">[:]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initializers"></a>
+                <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
+                <a href="#/Initializers">
+                  <h3 class="section-name">Initializers</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New17OccupancyDetectorcFT18unoccupiedIntervalSi15interruptValuesVS_16SensorComparator_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(unoccupiedInterval:interruptValues:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New17OccupancyDetectorcFT18unoccupiedIntervalSi15interruptValuesVS_16SensorComparator_S0_">init(unoccupiedInterval:interruptValues:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes with an update interval in <strong>MINUTES</strong></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="nf">init</span><span class="p">(</span><span class="nv">unoccupiedInterval</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">interruptValues</span><span class="p">:</span> <span class="kt"><a href="../Structs/SensorComparator.html">SensorComparator</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Timekeeping"></a>
+                <a name="//apple_ref/swift/Section/Timekeeping" class="dashAnchor"></a>
+                <a href="#/Timekeeping">
+                  <h3 class="section-name">Timekeeping</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New17OccupancyDetector19createCooldownTimerFT8sensorIDSS_CSo5Timer"></a>
+                    <a name="//apple_ref/swift/Method/createCooldownTimer(sensorID:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New17OccupancyDetector19createCooldownTimerFT8sensorIDSS_CSo5Timer">createCooldownTimer(sensorID:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">OccupancyDetector</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Dictionary%20Control"></a>
+                <a name="//apple_ref/swift/Section/Dictionary Control" class="dashAnchor"></a>
+                <a href="#/Dictionary%20Control">
+                  <h3 class="section-name">Dictionary Control</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New17OccupancyDetector29getCurrentOccupancyDictionaryFT_GVs10DictionarySSSb_"></a>
+                    <a name="//apple_ref/swift/Method/getCurrentOccupancyDictionary()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New17OccupancyDetector29getCurrentOccupancyDictionaryFT_GVs10DictionarySSSb_">getCurrentOccupancyDictionary()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Searches for changes in the current connected sensors
+and reports the sensors as occupied if changes occurred or
+unoccupied if no changes in state where found</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getCurrentOccupancyDictionary</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>[String: Bool]</code> an occupancy dictionary</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New17OccupancyDetector24getCurrentCooldownTimersFT12forOccupancyGVs10DictionarySSSb__GS1_SSCSo5Timer_"></a>
+                    <a name="//apple_ref/swift/Method/getCurrentCooldownTimers(forOccupancy:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New17OccupancyDetector24getCurrentCooldownTimersFT12forOccupancyGVs10DictionarySSSb__GS1_SSCSo5Timer_">getCurrentCooldownTimers(forOccupancy:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Computes new cooldown timers given the current occupancy. If a
+sensor reports that it is occupied, then it should get a fresh cooldown
+timer. If not, then it will pass the current timer, if it&rsquo;s still ticking.
+By the end of this method, only <em>occupied</em> sensors should have cooldown timers.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">getCurrentCooldownTimers</span><span class="p">(</span><span class="nv">forOccupancy</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Timer</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forOccupancy</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The occupancy dictionary to compare against</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>nil</code></p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC12Estimote_New17OccupancyDetector18updateDictionariesFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/updateDictionaries()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC12Estimote_New17OccupancyDetector18updateDictionariesFT_T_">updateDictionaries()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This function will compare the current occupancy to the last
+reported occupancy and update the values. It will also remove deleted
+sensors from occupancy tracking and update the cooldown timers. This function
+can run on loop in a background thread, since it <em>should</em> be the only method
+that mutates the dictionaries directly</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">updateDictionaries</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>nil</code></p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-03-15)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

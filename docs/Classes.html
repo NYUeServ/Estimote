@@ -13,7 +13,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (56% documented)</p>
+        <p><a href="index.html"> Docs</a> (32% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -30,6 +30,9 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Classes/CommunicationManager.html">CommunicationManager</a>
               </li>
               <li class="nav-group-task">
@@ -39,10 +42,44 @@
                 <a href="Classes/LogManager.html">LogManager</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes.html#/s:C12Estimote_New6Sensor">Sensor</a>
+                <a href="Classes/NewSensorsTableViewController.html">NewSensorsTableViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OccupancyDetector.html">OccupancyDetector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Sensor.html">Sensor</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/SensorManager.html">SensorManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SensorTableViewCell.html">SensorTableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SensorViewController.html">SensorViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SensorsTableViewController.html">SensorsTableViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SettingsViewController.html">SettingsViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/SensorComparator.html">SensorComparator</a>
               </li>
             </ul>
           </li>
@@ -56,6 +93,70 @@
 
           </section>
           <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C12Estimote_New26SensorsTableViewController"></a>
+                    <a name="//apple_ref/swift/Class/SensorsTableViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C12Estimote_New26SensorsTableViewController">SensorsTableViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/SensorsTableViewController.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C12Estimote_New17OccupancyDetector"></a>
+                    <a name="//apple_ref/swift/Class/OccupancyDetector" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C12Estimote_New17OccupancyDetector">OccupancyDetector</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>OccupancyDetector</code> class implements a set of
+methods that accept defined interrupts and calculates
+the <q>occupancy</q> for the chair in which the Estimote
+sensor is attached. This class will keep a constantly-updated
+list of connect sensors as a binary (1) occupied, or (0) unoccupied.
+This list will be forwarded to the AWS servers at defined intervals.
+Each <code><a href="Classes/Sensor.html">Sensor</a></code> will get its own cooldown timer which ticks for the defined
+interval. It is reset if an iterrupt is detected. If it times out, the sensor
+is then considered unoccupied.</p>
+
+                        <a href="Classes/OccupancyDetector.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">OccupancyDetector</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
             <div class="task-group">
               <ul>
                 <li class="item">
@@ -112,6 +213,7 @@ about each Estimote sensor. Each <code>Sensor</code> object&rsquo;s info in
 the <code><a href="Classes/SensorManager.html">SensorManager</a></code>&rsquo;s <code>connectedSensors</code> array is subject to 
 change, per the interval of update defined by <code><a href="Classes/SensorManager.html">SensorManager</a></code></p>
 
+                        <a href="Classes/Sensor.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -120,6 +222,30 @@ change, per the interval of update defined by <code><a href="Classes/SensorManag
                           <pre class="highlight"><code><span class="kd">class</span> <span class="kt">Sensor</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C12Estimote_New19SensorTableViewCell"></a>
+                    <a name="//apple_ref/swift/Class/SensorTableViewCell" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C12Estimote_New19SensorTableViewCell">SensorTableViewCell</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/SensorTableViewCell.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
@@ -177,7 +303,7 @@ can be read from the <code>connectedSensors</code> array</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The <code>LogManager</code> is a singleton class that handles the conversion of 
-<code><a href="Classes.html#/s:C12Estimote_New6Sensor">Sensor</a></code> objects to JSON files. The <code>LogManager</code> will maintain a rotating 
+<code><a href="Classes/Sensor.html">Sensor</a></code> objects to JSON files. The <code>LogManager</code> will maintain a rotating 
 list of sensor logs, which detail their acceleration, temp, etc.</p>
 
                         <a href="Classes/LogManager.html" class="slightly-smaller">See more</a>
@@ -189,6 +315,78 @@ list of sensor logs, which detail their acceleration, temp, etc.</p>
                           <pre class="highlight"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">LogManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C12Estimote_New11AppDelegate"></a>
+                    <a name="//apple_ref/swift/Class/AppDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C12Estimote_New11AppDelegate">AppDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/AppDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C12Estimote_New29NewSensorsTableViewController"></a>
+                    <a name="//apple_ref/swift/Class/NewSensorsTableViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C12Estimote_New29NewSensorsTableViewController">NewSensorsTableViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/NewSensorsTableViewController.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C12Estimote_New20SensorViewController"></a>
+                    <a name="//apple_ref/swift/Class/SensorViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C12Estimote_New20SensorViewController">SensorViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/SensorViewController.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
@@ -232,10 +430,34 @@ down to a (0) if the seat is unoccupied or (1) if the seat is occupied</p>
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C12Estimote_New22SettingsViewController"></a>
+                    <a name="//apple_ref/swift/Class/SettingsViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C12Estimote_New22SettingsViewController">SettingsViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/SettingsViewController.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-03-12)</p>
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-03-15)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

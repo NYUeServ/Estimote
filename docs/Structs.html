@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>  Reference</title>
+    <title>Structs  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,7 +10,7 @@
     
   </head>
   <body>
-    <a title="  Reference"></a>
+    <a title="Structs  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html"> Docs</a> (32% documented)</p>
@@ -20,7 +20,7 @@
       <p id="breadcrumbs">
         <a href="index.html"> Reference</a>
         <img id="carat" src="img/carat.png" />
-          Reference
+        Structs  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -88,38 +88,46 @@
       <article class="main-content">
         <section>
           <section class="section">
-            
-            <a href='#estimote-new' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='estimote-new'>Estimote-New</h1>
-<a href='#classes' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='classes'>Classes</h2>
-<a href='#sensor' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='sensor'>Sensor</h3>
+            <h1>Structs</h1>
+            <p>The following structs are available globally.</p>
 
-<p>The <code>Sensor</code> class defines the metrics we wish to store
-about each Estimote sensor. Each <code>Sensor</code> object&rsquo;s info in 
-the <code>SensorManager</code>&rsquo;s <code>connectedSensors</code> array is subject to 
-change, per the interval of update defined by <code>SensorManager</code></p>
-<a href='#data-processor' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='data-processor'>Data Processor</h3>
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V12Estimote_New16SensorComparator"></a>
+                    <a name="//apple_ref/swift/Struct/SensorComparator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V12Estimote_New16SensorComparator">SensorComparator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Used to compare one (or two) sensor object(s) by comparing
+the differences or using the thresholds defined in this struct.
+All values default to nil and the user can choose the ones they
+want to use by assiging them.</p>
 
-<p>The <code>DataProcessor</code> class defines a list of methods to parse
-the JSON infomration stored by the <code>LogManager</code>. Using tweakable
-thresholds, the <code>DataProcessor</code> will destill the sensor information
-down to a (0) if the seat is unoccupied or (1) if the seat is occupied</p>
+                        <a href="Structs/SensorComparator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">struct</span> <span class="kt">SensorComparator</span></code></pre>
 
-<p>The number of seats available can then be calculated by summing the number of
-(1)s and divding by the total numebr of sensors reported by the <code>SensorManager</code></p>
-<a href='#sensor-manager' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='sensor-manager'>Sensor Manager</h3>
-
-<p>The <code>SensorManager</code> is a singleton class that controls communication
-with the Estimote sensors, and manages a list of these sensors. The
-class is indented to update the sensors asyncronously, and their infomration
-can be read from the <code>connectedSensors</code> array</p>
-<a href='#communication-manager' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='communication-manager'>Communication Manager</h3>
-
-<p>The <code>CommunicationManager</code> is a singleton class that controls communication
-with AWS. The states of each sensor are sent as JSON via HTTP at defined intervals.
-The JSON contains a list of integers (0 or 1), by Estimote sensor ID name.
-0: Unoccupied seat
-1: Occupied seat</p>
-
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section id="footer">
