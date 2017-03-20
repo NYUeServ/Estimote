@@ -22,6 +22,15 @@ class NewSensorsTableViewController: UITableViewController {
         
         // Begin searching area for all new nearables
         sensorManager.nearableManager.startRanging(for: .all)
+        
+        // Table refresh timer
+        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { _ in
+            if let s = self.sensorManager.foundSensorsBuffer {
+                let sortedByID = s.values.sorted(by: { $0.identifier > $1.identifier})
+                self.foundSensors = sortedByID
+            }
+            self.tableView.reloadData()
+        })
     }
     
     func throwErrorMessage(title: String, message: String) {
@@ -74,28 +83,21 @@ class NewSensorsTableViewController: UITableViewController {
     // the SensorManager and remove it from the connectedSensors array
     override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
         let add = UITableViewRowAction(style: .normal, title: "Add") { action, index in
-            // Remove connection info for sensor from array and dictionary
-            if let error = self.sensorManager.addSensor(id: self.foundSensors[index.row].identifier) {
-                // Error occurred
-                self.throwErrorMessage(title: "Error When Adding", message: error)
+            if self.sensorManager.trackingSensorIDs.contains(self.foundSensors[index.row].identifier) {
+                // Already Tracking
+                self.throwErrorMessage(title: "Already Tracking Sensor", message: "")
             } else {
-                self.throwErrorMessage(title: "Successly Added!", message: "")
+                // Add connection info for sensor from array and dictionary
+                if let error = self.sensorManager.addSensor(id: self.foundSensors[index.row].identifier) {
+                    // Error occurred
+                    self.throwErrorMessage(title: "Error When Adding", message: error)
+                } else {
+                    self.throwErrorMessage(title: "Successly Added!", message: "")
+                }
             }
         }
         add.backgroundColor = .purple
         
         return[add]
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

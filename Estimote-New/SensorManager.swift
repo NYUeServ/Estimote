@@ -34,6 +34,9 @@ final class SensorManager: NSObject, ESTNearableManagerDelegate {
     /// When searching for all Nearable sensors, the ones discovered can be found here
     var foundSensorsBuffer: [String:Sensor]?
     
+    /// If a sensor was renamed, a name with its ID is stored here
+    var renamedSensorsDict: [String:String] = [:]
+    
     /// Holds any current error returned by the ESTNearableManager
     var currentError: String?
     
@@ -48,7 +51,7 @@ final class SensorManager: NSObject, ESTNearableManagerDelegate {
         super.init()
         nearableManager.delegate = self
         
-        // Load tracked sensors from memory
+        // Load tracked sensors, and renames from memory
         self.loadSensorIDs()
         
         // Begin ranging for sensors
@@ -122,6 +125,13 @@ final class SensorManager: NSObject, ESTNearableManagerDelegate {
     func nearableManager(_ manager: ESTNearableManager, didRangeNearable nearable: ESTNearable) {
         // Update the sensor in the Dictionary
         connectedSensors[nearable.identifier] = Sensor(nearable: nearable)
+        
+        // Check for custom name
+        if let rename = self.renamedSensorsDict[nearable.identifier] {
+            connectedSensors[nearable.identifier]?.name = rename
+            self.saveSensorIDs()
+        }
+        
         self.rangeSemaphore.signal()
     }
     
@@ -160,6 +170,13 @@ final class SensorManager: NSObject, ESTNearableManagerDelegate {
         var foundDict: [String: Sensor] = [:]
         for n in nearables {
             let sensor = Sensor(nearable: n)
+            
+            // Check for custom name
+            if let rename = self.renamedSensorsDict[sensor.identifier] {
+                sensor.name = rename
+                self.saveSensorIDs()
+            }
+            
             foundDict[sensor.identifier] = sensor
         }
         self.foundSensorsBuffer = foundDict
@@ -177,6 +194,7 @@ final class SensorManager: NSObject, ESTNearableManagerDelegate {
     func saveSensorIDs() {
         let defaults = UserDefaults.standard
         defaults.set(self.trackingSensorIDs, forKey: "sensors")
+        defaults.set(self.renamedSensorsDict, forKey: "renamedSensors")
     }
     
     /**
@@ -191,6 +209,12 @@ final class SensorManager: NSObject, ESTNearableManagerDelegate {
         if let ids = defaults.array(forKey: "sensors") {
             for s in ids {
                 self.trackingSensorIDs.append(s as! String)
+            }
+        }
+        
+        if let names = defaults.dictionary(forKey: "renamedSensors") {
+            for (sensor, name) in names {
+                self.renamedSensorsDict[sensor] = name as? String
             }
         }
     }

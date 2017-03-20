@@ -25,12 +25,13 @@ class SensorViewController: UIViewController {
     @IBOutlet weak var currState: UILabel!
     @IBOutlet weak var prevState: UILabel!
     
-    
     // MARK: - Initializers
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    // MARK: - View Handlers
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,11 +42,6 @@ class SensorViewController: UIViewController {
                              selector: #selector(updateFields),
                              userInfo: nil,
                              repeats: true)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func updateFields() {
@@ -59,15 +55,41 @@ class SensorViewController: UIViewController {
             prevState.text = sensor.previousState
         }
     }
+    
+    // MARK: - Action Handlers
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    /**
+     
+     Adds an entry to the rename dictionary for the current sensor ID
+     This name will display where ever the sensor name would normally be
+     displayed.
+     
+     - Returns: `nil`
+     
+     */
+    @IBAction func renameButtonPressed(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "New Estimote Sensor", message: "Enter the ID of the sensor to add", preferredStyle: .alert)
+        
+        // Add confirm action
+        let confirm = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            if let field = alert.textFields?[0], let name = field.text {
+                self.sensorManager.renamedSensorsDict[self.currentSensorID] = name
+            }
+        }
+        
+        // Add cancel action
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        // Add placeholder text
+        alert.addTextField { (textField) in
+            textField.placeholder = "New Name"
+        }
+        
+        // Attach actions to alert
+        alert.addAction(confirm)
+        alert.addAction(cancel)
+        
+        // Present the alert
+        self.present(alert, animated: true, completion: nil)
     }
-    */
-
 }

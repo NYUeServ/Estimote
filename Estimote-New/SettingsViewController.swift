@@ -33,6 +33,31 @@ class SettingsViewController: UIViewController {
         saveSettings()
     }
     
+    /**
+     
+     Resets the rename dictionary to contain no renames
+     
+     - Returns: `nil`
+     
+     */
+    @IBAction func resetRenamesPressed(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "Really Reset All Renames?",
+                                      message: "All custom names will be reset to default names.",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive) { _ in
+          let sm = SensorManager.sharedManager
+            sm.renamedSensorsDict = [:]
+            sm.saveSensorIDs()
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        
+        // Present the alert
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - Saving
     
     /**

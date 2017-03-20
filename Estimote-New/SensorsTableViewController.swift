@@ -10,6 +10,10 @@ import UIKit
 
 class SensorsTableViewController: UITableViewController {
     
+    // Constants, Tuning Parameters
+    let UNOCCUPIED_INTERVAL = 8
+    let ACCEL_THRESHOLD = 5
+    
     private let sensorManager = SensorManager.sharedManager
     
     let occupancyDetector: OccupancyDetector
@@ -26,9 +30,9 @@ class SensorsTableViewController: UITableViewController {
         
         // Init Occupancy Detector
         var interruptValues = SensorComparator()
-        interruptValues.accelerationChangeThreshold = 1 // This test value is far too sensitive
+        interruptValues.accelerationChangeThreshold = ACCEL_THRESHOLD
         interruptValues.isMoving = true
-        self.occupancyDetector = OccupancyDetector(unoccupiedInterval: 8,
+        self.occupancyDetector = OccupancyDetector(unoccupiedInterval: UNOCCUPIED_INTERVAL,
                                                    interruptValues: interruptValues)
         
         super.init(coder: aDecoder)
@@ -135,11 +139,6 @@ class SensorsTableViewController: UITableViewController {
         
         cell.name.text = sensor?.name
         cell.id.text = sensor?.identifier
-        
-        // If the sensor currently has an error, show the button to present that
-        if sensor?.currentError != nil {
-            cell.warningButton.isHidden = false
-        }
         
         // Display loading if needed
         if sensor?.name == nil || sensor?.identifier == nil {
