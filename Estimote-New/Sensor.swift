@@ -10,10 +10,12 @@ import UIKit
 import Foundation
 
 /**
+ 
  The `Sensor` class defines the metrics we wish to store
  about each Estimote sensor. Each `Sensor` object's info in 
  the `SensorManager`'s `connectedSensors` array is subject to 
- change, per the interval of update defined by `SensorManager`
+ change, per the interval of update defined by `SensorManager`.
+ 
  */
 class Sensor: NSObject {
     

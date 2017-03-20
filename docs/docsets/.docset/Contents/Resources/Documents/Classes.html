@@ -13,7 +13,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (34% documented)</p>
+        <p><a href="index.html"> Docs</a> (32% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,12 +31,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/AppDelegate.html">AppDelegate</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/CommunicationManager.html">CommunicationManager</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes.html#/s:C12Estimote_New13DataProcessor">DataProcessor</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/LogManager.html">LogManager</a>
@@ -162,42 +156,6 @@ is then considered unoccupied.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:C12Estimote_New20CommunicationManager"></a>
-                    <a name="//apple_ref/swift/Class/CommunicationManager" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C12Estimote_New20CommunicationManager">CommunicationManager</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The <code>CommunicationManager</code> is a singleton class that controls communication
-with AWS. The states of each sensor are sent as JSON via HTTP at defined intervals. 
-The JSON contains a list of integers (0 or 1), by Estimote sensor ID name.
-0: Unoccupied seat
-1: Occupied seat</p>
-
-                        <a href="Classes/CommunicationManager.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">CommunicationManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:C12Estimote_New6Sensor"></a>
                     <a name="//apple_ref/swift/Class/Sensor" class="dashAnchor"></a>
                     <a class="token" href="#/s:C12Estimote_New6Sensor">Sensor</a>
@@ -211,7 +169,7 @@ The JSON contains a list of integers (0 or 1), by Estimote sensor ID name.
                         <p>The <code>Sensor</code> class defines the metrics we wish to store
 about each Estimote sensor. Each <code>Sensor</code> object&rsquo;s info in 
 the <code><a href="Classes/SensorManager.html">SensorManager</a></code>&rsquo;s <code>connectedSensors</code> array is subject to 
-change, per the interval of update defined by <code><a href="Classes/SensorManager.html">SensorManager</a></code></p>
+change, per the interval of update defined by <code><a href="Classes/SensorManager.html">SensorManager</a></code>.</p>
 
                         <a href="Classes/Sensor.html" class="slightly-smaller">See more</a>
                       </div>
@@ -270,7 +228,7 @@ change, per the interval of update defined by <code><a href="Classes/SensorManag
                         <p>The <code>SensorManager</code> is a singleton class that controls communication
 with the Estimote sensors, and manages a list of these sensors. The
 class is indented to update the sensors asyncronously, and their infomration
-can be read from the <code>connectedSensors</code> array</p>
+can be read from the <code>connectedSensors</code> array.</p>
 
                         <a href="Classes/SensorManager.html" class="slightly-smaller">See more</a>
                       </div>
@@ -387,43 +345,6 @@ list of sensor logs, which detail their acceleration, temp, etc.</p>
                         <p>Undocumented</p>
 
                         <a href="Classes/SensorViewController.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:C12Estimote_New13DataProcessor"></a>
-                    <a name="//apple_ref/swift/Class/DataProcessor" class="dashAnchor"></a>
-                    <a class="token" href="#/s:C12Estimote_New13DataProcessor">DataProcessor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The <code>DataProcessor</code> class defines a list of methods to parse
-the JSON infomration stored by the <code><a href="Classes/LogManager.html">LogManager</a></code>. Using tweakable
-thresholds, the <code>DataProcessor</code> will destill the sensor information
-down to a (0) if the seat is unoccupied or (1) if the seat is occupied</p>
-
-<p>The number of seats available can then be calculated by summing the number of
-(1)s and divding by the total numebr of sensors reported by the <code><a href="Classes/SensorManager.html">SensorManager</a></code></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">DataProcessor</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
-
-                        </div>
                       </div>
                     </section>
                   </div>

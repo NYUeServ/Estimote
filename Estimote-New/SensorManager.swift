@@ -10,10 +10,12 @@ import UIKit
 import Pods_Estimote_New
 
 /**
+ 
  The `SensorManager` is a singleton class that controls communication
  with the Estimote sensors, and manages a list of these sensors. The
  class is indented to update the sensors asyncronously, and their infomration
- can be read from the `connectedSensors` array
+ can be read from the `connectedSensors` array.
+ 
  */
 final class SensorManager: NSObject, ESTNearableManagerDelegate {
     

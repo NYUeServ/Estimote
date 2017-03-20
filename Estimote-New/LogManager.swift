@@ -7,18 +7,30 @@
 //
 
 import UIKit
+import Alamofire
 
 /**
+ 
  The `LogManager` is a singleton class that handles the conversion of 
  `Sensor` objects to JSON files. The `LogManager` will maintain a rotating 
- list of sensor logs, which detail their acceleration, temp, etc. 
+ list of sensor logs, which detail their acceleration, temp, etc.
+ 
  */
 final class LogManager: NSObject {
     
     /// Singleton declaration
     static let sharedManager = LogManager()
     
+    // MARK: - Constants
+    
+    /// URL at which to push logs for interval
+    let awsURL = "http://ec2-54-161-116-6.compute-1.amazonaws.com:3000"
+    
+    // MARK: - Class Properties
+    
+    // External Managers
     private let sensorManager = SensorManager.sharedManager
+    var occupancyDetector: OccupancyDetector?
     
     /// Timer for logging data points to file per day
     private var logTimer: Timer?
@@ -32,10 +44,14 @@ final class LogManager: NSObject {
     // User defined
     private var logInterval: Int!
     
+    // MARK: - Initializers
+    
     // Initializer is private to prevent multiple instances
     override private init() {
         super.init()
     }
+    
+    // MARK: - Log Control
     
     /**
      
@@ -46,9 +62,10 @@ final class LogManager: NSObject {
      - Returns: `nil`
      
      */
-    func startAutomaticLogging(interval: Int) {
+    func startAutomaticLogging(interval: Int, occupancyDetector: OccupancyDetector) {
         print("[ INF ] Starting automatic logging with interval: \(interval)")
         logInterval = interval
+        self.occupancyDetector = occupancyDetector
         logTimer = Timer.scheduledTimer(timeInterval: Double(interval),
                                         target: self,
                                         selector: #selector(log),
@@ -161,9 +178,13 @@ final class LogManager: NSObject {
             }
         }
         
+        // Push binary occupancy states to server
+        pushToAWS()
+        
         // Return to logging
-        startAutomaticLogging(interval: self.logInterval)
+        startAutomaticLogging(interval: self.logInterval, occupancyDetector: self.occupancyDetector!)
     }
+    
     
     /**
      
@@ -174,5 +195,52 @@ final class LogManager: NSObject {
      */
     func clearLogs() {
         // TODO
+    }
+    
+    // MARK: - External Communications
+    
+    /**
+     
+     Will push the current JSON log dict to the specified server.
+     This will run when ever a new log entry is made for the specified
+     interval
+     
+     - Returns: `nil`
+     
+     */
+    func pushToAWS() {
+        
+        // Check Occupancy Detector is valid
+        if let occ = occupancyDetector?.occupancyDictionary {
+            
+            // Build Sensor States
+            // This will represent a JSON dict with the name
+            // followed by a boolean of its occupancy
+            var sensorStates: [String: Bool] = [:]
+            for (sensorID, isOccupied) in occ {
+                if let name = self.sensorManager.connectedSensors[sensorID]?.name {
+                    sensorStates[name] = isOccupied
+                } else {
+                    sensorStates[sensorID] = isOccupied
+                }
+            }
+            
+            // Push to server
+            Alamofire.request(awsURL,
+                              method: .post,
+                              parameters: sensorStates,
+                              encoding: JSONEncoding.default,
+                              headers: nil).response(completionHandler:
+            { resp in
+                if let err = resp.error {
+                    print("[ ERR ] Could not push to server: \(err)")
+                } else {
+                    print("[ INF ] Server Push OK")
+                }
+            })
+            
+        } else {
+            print("[ ERR ] Could not push occupancy to server: No Occupancy Detector")
+        }
     }
 }

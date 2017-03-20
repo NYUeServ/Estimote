@@ -23,7 +23,7 @@ import UIKit
  */
 class OccupancyDetector: NSObject {
     
-    // MARK: - Class Propertise
+    // MARK: - Class Properties
     
     /**
      

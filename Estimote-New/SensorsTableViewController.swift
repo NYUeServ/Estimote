@@ -11,7 +11,7 @@ import UIKit
 class SensorsTableViewController: UITableViewController {
     
     // Constants, Tuning Parameters
-    let UNOCCUPIED_INTERVAL = 8
+    let UNOCCUPIED_INTERVAL = 6
     let ACCEL_THRESHOLD = 5
     
     private let sensorManager = SensorManager.sharedManager
@@ -34,6 +34,16 @@ class SensorsTableViewController: UITableViewController {
         interruptValues.isMoving = true
         self.occupancyDetector = OccupancyDetector(unoccupiedInterval: UNOCCUPIED_INTERVAL,
                                                    interruptValues: interruptValues)
+        
+        // Enable Logging Manager
+        let logManager = LogManager.sharedManager
+        logManager.occupancyDetector = self.occupancyDetector
+        var logInterval = UserDefaults.standard.integer(forKey: "logInterval")
+        
+        // Not set by user, default to 8 minutes
+        if logInterval == 0 { logInterval = 6 }
+        
+        logManager.startAutomaticLogging(interval: 60*logInterval, occupancyDetector: occupancyDetector)
         
         super.init(coder: aDecoder)
     }

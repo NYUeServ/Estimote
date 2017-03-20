@@ -22,15 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
         UIBarButtonItem.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        // Enable the logging manager
-        let logManager = LogManager.sharedManager
-        var logInterval = UserDefaults.standard.integer(forKey: "logInterval")
-        
-        // Not set by user, default to 8 minutes
-        if logInterval == 0 { logInterval = 8 }
-        
-        logManager.startAutomaticLogging(interval: 60*logInterval)
-        
         return true
     }
 

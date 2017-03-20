@@ -23,37 +23,44 @@
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/AppDelegate.swift",
-      "line": 37,
+      "line": 28,
       "symbol": "AppDelegate.applicationWillResignActive(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/AppDelegate.swift",
-      "line": 42,
+      "line": 33,
       "symbol": "AppDelegate.applicationDidEnterBackground(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/AppDelegate.swift",
-      "line": 47,
+      "line": 38,
       "symbol": "AppDelegate.applicationWillEnterForeground(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/AppDelegate.swift",
-      "line": 51,
+      "line": 42,
       "symbol": "AppDelegate.applicationDidBecomeActive(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/AppDelegate.swift",
-      "line": 55,
+      "line": 46,
       "symbol": "AppDelegate.applicationWillTerminate(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/LogManager.swift",
+      "line": 33,
+      "symbol": "LogManager.occupancyDetector",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
@@ -121,189 +128,189 @@
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 21,
+      "line": 23,
       "symbol": "Sensor.xAcceleration",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 22,
+      "line": 24,
       "symbol": "Sensor.yAcceleration",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 23,
+      "line": 25,
       "symbol": "Sensor.zAcceleration",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 24,
+      "line": 26,
       "symbol": "Sensor.acc",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 28,
+      "line": 30,
       "symbol": "Sensor.cumulativeAcc",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 33,
+      "line": 35,
       "symbol": "Sensor.isMoving",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 34,
+      "line": 36,
       "symbol": "Sensor.temperature",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 35,
+      "line": 37,
       "symbol": "Sensor.currentState",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 36,
+      "line": 38,
       "symbol": "Sensor.previousState",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 39,
+      "line": 41,
       "symbol": "Sensor.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 40,
+      "line": 42,
       "symbol": "Sensor.identifier",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 41,
+      "line": 43,
       "symbol": "Sensor.type",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 42,
+      "line": 44,
       "symbol": "Sensor.color",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 45,
+      "line": 47,
       "symbol": "Sensor.currentError",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 47,
+      "line": 49,
       "symbol": "Sensor.init(nearable:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 98,
+      "line": 100,
       "symbol": "Sensor.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 123,
+      "line": 125,
       "symbol": "SensorComparator.xAcceleration",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 124,
+      "line": 126,
       "symbol": "SensorComparator.yAcceleration",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 125,
+      "line": 127,
       "symbol": "SensorComparator.zAcceleration",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 128,
+      "line": 130,
       "symbol": "SensorComparator.isMoving",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 129,
+      "line": 131,
       "symbol": "SensorComparator.temperature",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 130,
+      "line": 132,
       "symbol": "SensorComparator.currentState",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 131,
+      "line": 133,
       "symbol": "SensorComparator.previousState",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 133,
+      "line": 135,
       "symbol": "SensorComparator.accelerationChangeThreshold",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 134,
+      "line": 136,
       "symbol": "SensorComparator.temperatureChangeThreshold",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 136,
+      "line": 138,
       "symbol": "SensorComparator.thresholdIntChange(val1:val2:threshold:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/Sensor.swift",
-      "line": 140,
+      "line": 142,
       "symbol": "SensorComparator.thresholdDoubleChange(val1:val2:threshold:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
@@ -471,63 +478,63 @@
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/SensorsTableViewController.swift",
-      "line": 43,
+      "line": 53,
       "symbol": "SensorsTableViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/SensorsTableViewController.swift",
-      "line": 57,
+      "line": 67,
       "symbol": "SensorsTableViewController.viewWillAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/SensorsTableViewController.swift",
-      "line": 61,
+      "line": 71,
       "symbol": "SensorsTableViewController.refresh()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/SensorsTableViewController.swift",
-      "line": 128,
+      "line": 138,
       "symbol": "SensorsTableViewController.numberOfSections(in:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/SensorsTableViewController.swift",
-      "line": 132,
+      "line": 142,
       "symbol": "SensorsTableViewController.tableView(_:numberOfRowsInSection:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/SensorsTableViewController.swift",
-      "line": 136,
+      "line": 146,
       "symbol": "SensorsTableViewController.tableView(_:cellForRowAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/SensorsTableViewController.swift",
-      "line": 167,
+      "line": 177,
       "symbol": "SensorsTableViewController.tableView(_:editActionsForRowAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/SensorsTableViewController.swift",
-      "line": 178,
+      "line": 188,
       "symbol": "SensorsTableViewController.tableView(_:canEditRowAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/colesmith/Google Drive/NYU-iOS/estimote/Estimote-New/SensorsTableViewController.swift",
-      "line": 185,
+      "line": 195,
       "symbol": "SensorsTableViewController.prepare(for:sender:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
