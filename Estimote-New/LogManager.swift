@@ -13,7 +13,8 @@ import Alamofire
  
  The `LogManager` is a singleton class that handles the conversion of 
  `Sensor` objects to JSON files. The `LogManager` will maintain a rotating 
- list of sensor logs, which detail their acceleration, temp, etc.
+ list of sensor logs, which detail their acceleration, temp, etc. Pushes
+ occupancy list from the `Occupancy Detector` to the AWS Server.
  
  */
 final class LogManager: NSObject {
