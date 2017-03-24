@@ -28,7 +28,7 @@ class Sensor: NSObject {
             yAcceleration + zAcceleration * zAcceleration))*1000)/1000
     }
     var cumulativeAcc: Int {
-        return xAcceleration + yAcceleration + zAcceleration
+        return abs(xAcceleration) + abs(yAcceleration) + abs(zAcceleration)
     }
     
     // States
@@ -45,6 +45,13 @@ class Sensor: NSObject {
     
     // Error Handling
     var currentError:String?
+    
+    // This is a special value that allows for dynamic
+    // acceleration thresholding. If a sensor is found to
+    // be experiencing background noise in its accelteration sensor,
+    // its average acceleration change sum will be reported here.
+    // It is calculated as the average of `acc` over time unoccupied.
+    var backgroundNoiseCoefficient: Int = 0
     
     init(nearable: ESTNearable) {
         

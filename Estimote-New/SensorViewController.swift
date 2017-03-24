@@ -16,6 +16,8 @@ class SensorViewController: UIViewController {
     
     var currentSensorID: String!
     
+    var occupancyDetector: OccupancyDetector!
+    
     // MARK: - Outlets
     
     @IBOutlet weak var id: UILabel!
@@ -24,6 +26,7 @@ class SensorViewController: UIViewController {
     @IBOutlet weak var isMoving: UILabel!
     @IBOutlet weak var currState: UILabel!
     @IBOutlet weak var prevState: UILabel!
+    @IBOutlet weak var cooldownTimer: UILabel!
     
     // MARK: - Initializers
     
@@ -53,6 +56,15 @@ class SensorViewController: UIViewController {
             isMoving.text = String(describing: sensor.isMoving)
             currState.text = sensor.currentState
             prevState.text = sensor.previousState
+            
+            if let timer = self.occupancyDetector.cooldownTimers[self.currentSensorID] {
+                let timeLeft = timer.fireDate.timeIntervalSinceNow
+                let minutesLeft = Int(timeLeft / 60)
+                let secondsLeft = Int(timeLeft.truncatingRemainder(dividingBy: 60))
+                self.cooldownTimer.text = "\(minutesLeft):\(secondsLeft)"
+            } else {
+                self.cooldownTimer.text = "( Unoccupied )"
+            }
         }
     }
     

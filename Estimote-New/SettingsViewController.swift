@@ -13,6 +13,7 @@ class SettingsViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var loggingIntervalField: UITextField!
+    @IBOutlet weak var sensitivityField: UITextField!
     
     // MARK: - Initializers
     
@@ -25,6 +26,24 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
+        // Load from defaults
+        var logInterval = UserDefaults.standard.integer(forKey: "logInterval")
+        var threshold   = UserDefaults.standard.integer(forKey: "sensitivity")
+        
+        // Not set by user, default to 5 minutes
+        if logInterval == 0 { logInterval = 5 }
+        if threshold   == 0 { threshold   = 10 }
+        
+        // Set loaded values to placeholder
+        loggingIntervalField.placeholder = String(logInterval)
+        sensitivityField.placeholder     = String(threshold)
+    }
+    
+    func throwErrorMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Action Handlers
@@ -72,6 +91,10 @@ class SettingsViewController: UIViewController {
         if let t = loggingIntervalField.text, let i = Int(t) {
             defaults.set(i, forKey: "logInterval")
         }
+        if let s = sensitivityField.text, let i = Int(s) {
+            defaults.set(i, forKey: "sensitivity")
+        }
+        throwErrorMessage(title: "Save Success", message: "Changes will take effect on restart.")
     }
 }
 

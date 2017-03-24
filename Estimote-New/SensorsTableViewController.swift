@@ -10,10 +10,6 @@ import UIKit
 
 class SensorsTableViewController: UITableViewController {
     
-    // Constants, Tuning Parameters
-    let UNOCCUPIED_INTERVAL = 6
-    let ACCEL_THRESHOLD = 5
-    
     private let sensorManager = SensorManager.sharedManager
     
     let occupancyDetector: OccupancyDetector
@@ -28,21 +24,24 @@ class SensorsTableViewController: UITableViewController {
         // Attach tracked sensors
         connectedSensorIDs = sensorManager.trackingSensorIDs
         
+        // Load from defaults
+        var logInterval = UserDefaults.standard.integer(forKey: "logInterval")
+        var threshold   = UserDefaults.standard.integer(forKey: "sensitivity")
+        
+        // Not set by user, default to 5 minutes
+        if logInterval == 0 { logInterval = 5 }
+        if threshold   == 0 { threshold   = 10 }
+        
         // Init Occupancy Detector
         var interruptValues = SensorComparator()
-        interruptValues.accelerationChangeThreshold = ACCEL_THRESHOLD
+        interruptValues.accelerationChangeThreshold = threshold
         interruptValues.isMoving = true
-        self.occupancyDetector = OccupancyDetector(unoccupiedInterval: UNOCCUPIED_INTERVAL,
+        self.occupancyDetector = OccupancyDetector(unoccupiedInterval: logInterval,
                                                    interruptValues: interruptValues)
         
         // Enable Logging Manager
         let logManager = LogManager.sharedManager
         logManager.occupancyDetector = self.occupancyDetector
-        var logInterval = UserDefaults.standard.integer(forKey: "logInterval")
-        
-        // Not set by user, default to 8 minutes
-        if logInterval == 0 { logInterval = 6 }
-        
         logManager.startAutomaticLogging(interval: 60*logInterval, occupancyDetector: occupancyDetector)
         
         super.init(coder: aDecoder)
@@ -198,6 +197,7 @@ class SensorsTableViewController: UITableViewController {
         if segue.identifier == "toSensor" {
             let dest = segue.destination as? SensorViewController
             dest?.currentSensorID = connectedSensorIDs[(tableView.indexPathForSelectedRow?.row)!]
+            dest?.occupancyDetector = self.occupancyDetector
         }
     }
 }

@@ -105,6 +105,9 @@ final class LogManager: NSObject {
      */
     func log() {
         
+        // Push binary occupancy states to server
+        pushToAWS()
+        
         // Get date string
         let date = Date()
         let cal  = Calendar.current
@@ -179,9 +182,6 @@ final class LogManager: NSObject {
             }
         }
         
-        // Push binary occupancy states to server
-        pushToAWS()
-        
         // Return to logging
         startAutomaticLogging(interval: self.logInterval, occupancyDetector: self.occupancyDetector!)
     }
@@ -226,19 +226,33 @@ final class LogManager: NSObject {
                 }
             }
             
-            // Push to server
-            Alamofire.request(awsURL,
-                              method: .post,
-                              parameters: sensorStates,
-                              encoding: JSONEncoding.default,
-                              headers: nil).response(completionHandler:
-            { resp in
-                if let err = resp.error {
-                    print("[ ERR ] Could not push to server: \(err)")
-                } else {
-                    print("[ INF ] Server Push OK")
-                }
-            })
+            // Get date string
+            let date = Date()
+            let cal  = Calendar.current
+            let comp = cal.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+            if let y = comp.year, let m = comp.month, let d = comp.day,
+                let h = comp.hour, let mi = comp.minute {
+                
+                // Convert object to dict
+                let dateString = "\(y)-\(m)-\(d)-\(h):\(mi)"
+                let transferDict: [String: AnyObject] = [ "timestamp":dateString as AnyObject,
+                                                          "sensors":sensorStates as AnyObject ]
+                
+                // Push to server
+                Alamofire.request(awsURL,
+                                  method: .post,
+                                  parameters: transferDict,
+                                  encoding: JSONEncoding.default,
+                                  headers: nil).response(completionHandler:
+                                    { resp in
+                                        if let err = resp.error {
+                                            print("[ ERR ] Could not push to server: \(err)")
+                                        } else {
+                                            print("[ INF ] Server Push OK")
+                                        }
+                                  })
+                
+            }
             
         } else {
             print("[ ERR ] Could not push occupancy to server: No Occupancy Detector")
