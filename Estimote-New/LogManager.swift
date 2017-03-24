@@ -90,8 +90,6 @@ final class LogManager: NSObject {
         print("[ INF ] Stopping automatic logging")
         // Stop logging
         logTimer?.invalidate()
-        // Save current file
-        logFile()
         fileTimer?.invalidate()
     }
     
@@ -118,8 +116,7 @@ final class LogManager: NSObject {
             // Convert object to dict
             let dateString = "\(y)-\(m)-\(d)-\(h):\(mi)"
             var jsonDict: [String: AnyObject] = [:]
-            jsonDict["date"] = dateString as AnyObject
-            
+            var sensorsDict: [String: AnyObject] = [:]
             for (_, sensor) in sensorManager.connectedSensors {
                 let sensorDict: [String: AnyObject] = [
                     "name"          : sensor.name as AnyObject,
@@ -132,8 +129,10 @@ final class LogManager: NSObject {
                     "previousState" : sensor.previousState as AnyObject
                 ]
                 
-                jsonDict["\(sensor.identifier)"] = sensorDict as AnyObject
+                sensorsDict["\(sensor.identifier)"] = sensorDict as AnyObject
             }
+            
+            jsonDict[dateString] = sensorsDict as AnyObject
             
             // Convert to JSON
             do {
