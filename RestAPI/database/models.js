@@ -1,9 +1,7 @@
-require('dotenv').config({ path: '../.env' });
+//require('dotenv').config({ path: '../.env' });
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_HOST);
-
-//console.log(process.env.DB_HOST);
 
 // check connection
 var db = mongoose.connection;
