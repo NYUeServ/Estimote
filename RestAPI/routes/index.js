@@ -5,12 +5,35 @@ var router = express.Router();
 var db = require('../database/models');
 
 // send sticker status from IOS to database.
+// input sample:
+// ["timestamp": 2017-3-24-11:30, "sensors": {
+//   1a88e4f504a0c6bb = 0;
+// }]
 router.post('/saveToDB', function(req, res) {
-    console.log(req.headers);
-    res.jsonp("Good");
+    var timestamp = req.body.timestamp;
+    var sensors = req.body.sensors;
+
+    var b = false;
+    for (var key in sensors) {
+        if (sensors.hasOwnProperty(key)) {
+            var value = sensors[key];
+            // insert into database
+            db.insertEvent(key, timestamp, value, function(err, event) {
+                if (err) {
+                    console.log(err);
+                    res.jsonp('fail: ' + err);
+                    b = true;
+                }
+            });
+
+            if (b) break;
+        }
+    }
+    res.jsonp('success');
 });
 
 // get sticker status from database
+// /getFromDB/?id=...&start=...&end=...
 router.get('/getFromDB', function(req, res) {
     var id = null;
     var start = null;
