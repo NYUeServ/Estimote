@@ -25,7 +25,7 @@ final class LogManager: NSObject {
     // MARK: - Constants
     
     /// URL at which to push logs for interval
-    let awsURL = "http://ec2-54-161-116-6.compute-1.amazonaws.com:3000"
+    let awsURL = "http://ec2-54-161-116-6.compute-1.amazonaws.com:3000/saveToDB/"
     
     // MARK: - Class Properties
     

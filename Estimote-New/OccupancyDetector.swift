@@ -115,7 +115,7 @@ class OccupancyDetector: NSObject {
                 if let acc =  interruptValues.accelerationChangeThreshold {
                     if SensorComparator.thresholdDoubleChange(val1: prevSensor!.cumulativeAcc,
                                                            val2: currentSensor.cumulativeAcc,
-                                                           threshold: Double(acc)) { print("SENSOR MOVED") ; matchCount += 1 }
+                                                           threshold: Double(acc)) { matchCount += 1 }
                 }
                 
                 // Check isMoving
