@@ -1,6 +1,7 @@
 //require('dotenv').config({ path: '../.env' });
 var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+//global.Promise.ES6 doesn't exist using node 6.2.2
+//mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_HOST);
 
 // check connection
