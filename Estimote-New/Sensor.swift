@@ -27,8 +27,12 @@ class Sensor: NSObject {
         return round(sqrt(Double(xAcceleration * xAcceleration + yAcceleration *
             yAcceleration + zAcceleration * zAcceleration))*1000)/1000
     }
-    var cumulativeAcc: Int {
-        return abs(xAcceleration) + abs(yAcceleration) + abs(zAcceleration)
+    var cumulativeAcc: Double {
+        return sqrt( Double(pow(Double(xAcceleration), 2) +
+                            pow(Double(yAcceleration), 2) +
+                            pow(Double(zAcceleration), 2))
+        )
+//        return abs(xAcceleration) + abs(yAcceleration) + abs(zAcceleration)
     }
     
     // States
@@ -142,9 +146,9 @@ struct SensorComparator {
     var accelerationChangeThreshold: Int?
     var temperatureChangeThreshold: Double?
     
-    static func thresholdIntChange(val1: Int, val2: Int, threshold: Int) -> Bool {
-        return ((abs(val1) - abs(val2)) >= threshold)
-    }
+//    static func thresholdIntChange(val1: Int, val2: Int, threshold: Int) -> Bool {
+//        return ((abs(val1) - abs(val2)) >= threshold)
+//    }
     
     static func thresholdDoubleChange(val1: Double, val2: Double, threshold: Double) -> Bool {
         return ((abs(val1) - abs(val2)) >= threshold)
