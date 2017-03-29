@@ -2,6 +2,9 @@
 var mongoose = require('mongoose');
 //global.Promise.ES6 doesn't exist using node 6.2.2
 //mongoose.Promise = global.Promise;
+
+var timezone = require('../tools/timezone');
+
 mongoose.connect(process.env.DB_HOST);
 
 //mongoose.connect('mongodb://localhost/estimotest');
@@ -27,7 +30,7 @@ exports.updateStatus = function(s_timestamp, s_sensors, callback) {
     Status.find({}, function(err, status_l) {
         if (status_l.length == 0) {
             var status = new Status({
-                timestamp : new Date(s_timestamp),
+                timestamp : timezone.getDateFromTimezone(s_timestamp, 'America/New_York'),
                 sensors : s_sensors
             });
 
@@ -39,7 +42,7 @@ exports.updateStatus = function(s_timestamp, s_sensors, callback) {
             var id = status_l[0]._id;
             Status.update({ _id : id },
                 { $set : {
-                    timestamp : new Date(s_timestamp),
+                    timestamp : timezone.getDateFromTimezone(s_timestamp, 'America/New_York'),
                     sensors : s_sensors
                 } }, function(err, status) {
                     if (err) callback(err, null);
@@ -56,7 +59,12 @@ exports.getStatus = function(callback) {
         if (status_l.length == 0) {
             callback("No record in DB.", null);
         } else if (status_l.length == 1) {
-            callback(null, status_l[0]);
+            var date = timezone.formatDateUsingTimezone(new Date(status_l[0].timestamp), 'America/New_York');
+            callback(null, {
+                'date' : date.date,
+                'time' : date.time,
+                'sensors' : status_l[0].sensors
+            });
         } else {
             callback("More than one records found.", null);
         }
@@ -67,7 +75,7 @@ exports.getStatus = function(callback) {
 exports.insertEvent = function(s_id, s_timestamp, s_status, callback) {
     var event = new Event({
         id : s_id,
-        timestamp : new Date(s_timestamp),
+        timestamp : timezone.getDateFromTimezone(s_timestamp, 'America/New_York'),
         status : (s_status == 1 ? true : false)
     });
 
@@ -90,14 +98,16 @@ exports.getEvent = function(s_id, t_start, t_end, callback) {
             }, callback);
         }
     } else if (t_start != null && t_end != null) {
+        var start = timezone.getDateFromTimezone(t_start, 'America/New_York');
+        var end = timezone.getDateFromTimezone(t_end, 'America/New_York');
         if (s_id == null) {
             Event.find({
-                timestamp : { $gte : t_start, $lte : t_end }
+                timestamp : { $gte : start, $lte : end }
             }, callback);
         } else {
             Event.find({
                 id : s_id,
-                timestamp : { $gte : t_start, $lte : t_end }
+                timestamp : { $gte : start, $lte : end }
             }, callback);
         }
     } else {
