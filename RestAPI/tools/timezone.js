@@ -19,7 +19,7 @@ exports.getDateFromTimezone = function(timestr, timezonestr) {
 }
 
 exports.formatDateUsingTimezone = function(date, timezonestr) {
-    var l = moment.tz(date.toString(), timezonestr).format();
+    var l = moment.tz(date.toISOString(), timezonestr).format();
     var d = l.split('T')[0];
     var t = l.split('T')[1];
 
