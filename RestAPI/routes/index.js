@@ -6,6 +6,21 @@ var db = require('../database/models');
 
 var token = require('../authen/token');
 
+router.get('/getStatus', function(req, res) {
+    if (token.validate(req)) {
+        db.getStatus(function(err, status) {
+            if (err) {
+                console.log('[ERROR] ' + err);
+                res.jsonp(null);
+            } else {
+                res.jsonp(status);
+            }
+        });
+    } else {
+        res.send(401);
+    }
+});
+
 // send sticker status from IOS to database.
 // input sample:
 // ["timestamp": 2017-3-24-11:30, "sensors": {
@@ -15,6 +30,12 @@ router.post('/saveToDB', function(req, res) {
     if (token.validate(req)) {
         var timestamp = req.body.timestamp;
         var sensors = req.body.sensors;
+
+        // store status
+        db.updateStatus(timestamp, sensors, function(err, status) {
+            if (err) console.log("[ERROR] " + err);
+            else console.log("Updated status!");
+        });
 
         var b = false;
         for (var key in sensors) {
