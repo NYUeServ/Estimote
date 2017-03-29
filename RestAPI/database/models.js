@@ -1,7 +1,7 @@
 //require('dotenv').config({ path: '../.env' });
 var mongoose = require('mongoose');
-//global.Promise.ES6 doesn't exist using node 6.2.2
-//mongoose.Promise = global.Promise;
+//use bluebird promise library
+mongoose.Promise = require('bluebird');
 
 var timezone = require('../tools/timezone');
 
