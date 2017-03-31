@@ -216,13 +216,17 @@ final class LogManager: NSObject {
             // Build Sensor States
             // This will represent a JSON dict with the name
             // followed by a boolean of its occupancy
-            var sensorStates: [String: Bool] = [:]
+            var sensorStates: [String: AnyObject] = [:]
             for (sensorID, isOccupied) in occ {
+                
+                var sensorPayload: [String: AnyObject] = [:]
+                sensorPayload["state"] = isOccupied as AnyObject
+                
                 if let name = self.sensorManager.connectedSensors[sensorID]?.name {
-                    sensorStates[name] = isOccupied
-                } else {
-                    sensorStates[sensorID] = isOccupied
+                    sensorPayload["name"] = name as AnyObject
                 }
+                
+                sensorStates[sensorID] = sensorPayload as AnyObject
             }
             
             // Get date string
@@ -238,11 +242,12 @@ final class LogManager: NSObject {
                                                           "sensors":sensorStates as AnyObject ]
                 
                 // Push to server
+                let header = ["token" : "cc66bB#a1B11#a"]
                 Alamofire.request(awsURL,
                                   method: .post,
                                   parameters: transferDict,
                                   encoding: JSONEncoding.default,
-                                  headers: nil).response(completionHandler:
+                                  headers: header).response(completionHandler:
                                     { resp in
                                         if let err = resp.error {
                                             print("[ ERR ] Could not push to server: \(err)")
