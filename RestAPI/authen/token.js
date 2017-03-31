@@ -4,6 +4,7 @@ var TokenGenerator = require( 'token-generator' )({
     timestampMap: 'abcABC123#',
 });
 
+// this generate the token
 //var token = TokenGenerator.generate();
 
 var isValid = function(token) {
@@ -11,9 +12,9 @@ var isValid = function(token) {
 }
 
 exports.validate = function(req) {
-    return true;
-    // if (req == null) return false;
-    // else if (req.headers == null) return false;
-    // else if (req.headers.token == null) return false;
-    // else return isValid(req.headers.token);
+    // return true;
+    if (req == null) return false;
+    else if (req.headers == null) return false;
+    else if (req.headers.token == null) return false;
+    else return isValid(req.headers.token);
 }

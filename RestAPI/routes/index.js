@@ -23,9 +23,9 @@ router.get('/getStatus', function(req, res) {
 
 // send sticker status from IOS to database.
 // input sample:
-// ["timestamp": 2017-3-24-11:30, "sensors": {
-//   1a88e4f504a0c6bb = 0;
-// }]
+// ["timestamp": 2017-3-24-11:30, "sensors": [
+//   '1a88e4f504a0c6bb' : { name : ..., status : 1/0},
+// ]]
 router.post('/saveToDB', function(req, res) {
     if (token.validate(req)) {
         var timestamp = req.body.timestamp;
@@ -42,7 +42,7 @@ router.post('/saveToDB', function(req, res) {
             if (sensors.hasOwnProperty(key)) {
                 var value = sensors[key];
                 // insert into database
-                db.insertEvent(key, timestamp, value, function(err, event) {
+                db.insertEvent(key, timestamp, value.name, value.state, function(err, event) {
                     if (err) {
                         console.log(err);
                         res.jsonp('fail: ' + err);

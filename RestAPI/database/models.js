@@ -18,6 +18,7 @@ db.once('open', function() {
 var Event = mongoose.model('Event', {
     id : String,
     timestamp : Date,
+    name : String,
     status : Boolean
 });
 
@@ -72,11 +73,12 @@ exports.getStatus = function(callback) {
 }
 
 // id is a string, timestamp is a string, status is 0/1
-exports.insertEvent = function(s_id, s_timestamp, s_status, callback) {
+exports.insertEvent = function(s_id, s_timestamp, s_name, s_state, callback) {
     var event = new Event({
         id : s_id,
         timestamp : timezone.getDateFromTimezone(s_timestamp, 'America/New_York'),
-        status : (s_status == 1 ? true : false)
+        name : s_name,
+        status : (s_state == 1 ? true : false)
     });
 
     event.save(function(err) {
