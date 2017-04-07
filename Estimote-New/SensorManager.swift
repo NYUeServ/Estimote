@@ -42,6 +42,9 @@ final class SensorManager: NSObject, ESTNearableManagerDelegate {
     /// Holds any current error returned by the ESTNearableManager
     var currentError: String?
     
+    /// The Device Space ID is assigned on the fist run, used for server-side management
+    var deviceSpaceID: String!
+    
     // Semaphore to wait until ranging a sensor returns either
     // an error or a successful range
     private let rangeSemaphore = DispatchSemaphore(value: 0)

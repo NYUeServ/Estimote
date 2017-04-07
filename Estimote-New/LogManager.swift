@@ -120,6 +120,7 @@ final class LogManager: NSObject {
             for (_, sensor) in sensorManager.connectedSensors {
                 let sensorDict: [String: AnyObject] = [
                     "name"          : sensor.name as AnyObject,
+                    "spaceID"       : sensor.spaceID as AnyObject,
                     "xAcceleration" : sensor.xAcceleration as AnyObject,
                     "yAcceleration" : sensor.yAcceleration as AnyObject,
                     "zAcceleration" : sensor.zAcceleration as AnyObject,
@@ -185,18 +186,6 @@ final class LogManager: NSObject {
         startAutomaticLogging(interval: self.logInterval, occupancyDetector: self.occupancyDetector!)
     }
     
-    
-    /**
-     
-     Deletes all log files
-     
-     - Returns: `nil`
-     
-     */
-    func clearLogs() {
-        // TODO
-    }
-    
     // MARK: - External Communications
     
     /**
@@ -224,6 +213,10 @@ final class LogManager: NSObject {
                 
                 if let name = self.sensorManager.connectedSensors[sensorID]?.name {
                     sensorPayload["name"] = name as AnyObject
+                }
+                
+                if let spid = self.sensorManager.connectedSensors[sensorID]?.spaceID {
+                    sensorPayload["spaceID"] = spid as AnyObject
                 }
                 
                 sensorStates[sensorID] = sensorPayload as AnyObject

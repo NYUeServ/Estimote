@@ -188,6 +188,39 @@ class SensorsTableViewController: UITableViewController {
         return true
     }
     
+    // MARK: - Space ID Support
+    
+    func promptForSpaceID() {
+        // Load Space ID from memory, if it doesn't exist, prompt for it
+        if let spid = UserDefaults.standard.string(forKey: "spaceID") {
+            self.sensorManager.deviceSpaceID = spid
+        } else {
+            // Prompt for Space ID
+            let alert = UIAlertController(title: "Please Enter Space ID For This Device", message: "", preferredStyle: .alert)
+            
+            // Add confirm action
+            let confirm = UIAlertAction(title: "Confirm", style: .default) { (_) in
+                if let field = alert.textFields?[0], let id = field.text {
+                    self.sensorManager.deviceSpaceID = id
+                    UserDefaults.standard.setValue(id, forKey: "spaceID")
+                } else {
+                    self.promptForSpaceID()
+                }
+            }
+            
+            // Add placeholder text
+            alert.addTextField { (textField) in
+                textField.placeholder = "Space ID"
+            }
+            
+            // Attach actions to alert
+            alert.addAction(confirm)
+            
+            // Present the alert
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

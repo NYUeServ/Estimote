@@ -32,7 +32,6 @@ class Sensor: NSObject {
                             pow(Double(yAcceleration), 2) +
                             pow(Double(zAcceleration), 2))
         )
-//        return abs(xAcceleration) + abs(yAcceleration) + abs(zAcceleration)
     }
     
     // States
@@ -46,6 +45,7 @@ class Sensor: NSObject {
     var identifier: String
     var type:       String
     var color:      String
+    var spaceID:    String
     
     // Error Handling
     var currentError:String?
@@ -104,6 +104,14 @@ class Sensor: NSObject {
         self.name = "\(self.color) \(self.type)"
         self.currentState = "\(nearable.currentMotionStateDuration)"
         self.previousState = "\(nearable.previousMotionStateDuration)"
+        
+        // Load SpaceID
+        if let spid = UserDefaults.standard.string(forKey: "spaceID") {
+            self.spaceID = spid
+        } else {
+            print("[ ERR ] Space ID not set!")
+            self.spaceID = ""
+        }
         
         super.init()
     }
