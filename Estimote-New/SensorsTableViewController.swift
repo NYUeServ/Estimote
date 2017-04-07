@@ -52,6 +52,8 @@ class SensorsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        promptForSpaceID()
+        
         // Table refresh timer
         Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { _ in
             self.tableView.reloadData()
