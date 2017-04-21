@@ -25,7 +25,7 @@ final class LogManager: NSObject {
     // MARK: - Constants
     
     /// URL at which to push logs for interval
-    let awsURL = "http://ec2-54-161-116-6.compute-1.amazonaws.com:3000/saveToDB/"
+    let awsURL = "http://ec2-52-90-162-46.compute-1.amazonaws.com/saveToDB/"
     
     // MARK: - Class Properties
     
@@ -211,9 +211,9 @@ final class LogManager: NSObject {
                 var sensorPayload: [String: AnyObject] = [:]
                 sensorPayload["state"] = isOccupied as AnyObject
                 
-                if let name = self.sensorManager.connectedSensors[sensorID]?.name {
-                    sensorPayload["name"] = name as AnyObject
-                }
+                // if let name = self.sensorManager.connectedSensors[sensorID]?.name {
+                //     sensorPayload["name"] = name as AnyObject
+                // }
                 
                 if let spid = self.sensorManager.connectedSensors[sensorID]?.spaceID {
                     sensorPayload["spaceID"] = spid as AnyObject
@@ -230,7 +230,8 @@ final class LogManager: NSObject {
                 let h = comp.hour, let mi = comp.minute {
                 
                 // Convert object to dict
-                let dateString = "\(y)-\(m)-\(d)-\(h):\(mi)"
+                let mi_ = ( (mi < 10) ? ("0\(mi)"): "\(mi)" )   // Add zero to value less then 10
+                let dateString = "\(y) - \(m) - \(d) - \(h): \(mi_)"
                 let transferDict: [String: AnyObject] = [ "timestamp":dateString as AnyObject,
                                                           "sensors":sensorStates as AnyObject ]
                 
