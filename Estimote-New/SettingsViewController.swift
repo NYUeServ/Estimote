@@ -77,6 +77,30 @@ class SettingsViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    /**
+     
+     Clears the stored JSON logs from the documents directory
+     
+     - Returns: `nil`
+     
+     */
+    @IBAction func clearLogsPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Really Clear All Logs?",
+                                      message: "All logs will be deleted. This cannot be undone",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive) { _ in
+            LogManager.sharedManager.clearLogs()
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        
+        // Present the alert
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     // MARK: - Saving
     
     /**

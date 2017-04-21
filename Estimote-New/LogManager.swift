@@ -256,4 +256,24 @@ final class LogManager: NSObject {
             print("[ ERR ] Could not push occupancy to server: No Occupancy Detector")
         }
     }
+    
+    /**
+     
+     Clears the stored JSON logs from the documents directory
+     
+     - Returns: `nil`
+     
+     */
+    func clearLogs() {
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
+           let docs = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil, options: []) {
+            
+            for d in docs {
+                if d.absoluteString.contains(".json") {
+                    print("Deleting: " + d.absoluteString)
+                    try? FileManager.default.removeItem(at: d.absoluteURL)
+                }
+            }
+        }
+    }
 }
